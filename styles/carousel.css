@@ -1,0 +1,32 @@
+.carousel {
+    width: 80%;
+    margin: auto;
+    margin-left: 17%
+}
+.carouselHeading {
+    font-weight: 200;
+    text-align: center;
+    margin-left: 12%;
+    margin-bottom: 25px;
+}
+
+.products {
+    display: inline-flex;
+}
+
+.productContainer {
+    overflow: hidden;
+    margin: 0 5%;
+}
+@media only screen and (max-width: 600px) {
+    .carouselHeading{
+        margin-left: 0px;
+    }
+    .carousel{
+        width: 90%;
+        margin: auto;
+    }
+    .carouselHeading{
+        margin-top: 25px;
+    }
+}

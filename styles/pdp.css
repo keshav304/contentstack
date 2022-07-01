@@ -1,0 +1,133 @@
+.pdpContainer {
+    display:flex;
+    margin-top:6%;
+}
+.imageContainer {
+    width: 55%;
+    height: 550px;
+}
+.pdpMainImage {
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+    padding-left: 5%;
+}
+.pdpFirstMainImage{
+    width: 65%;
+    object-fit: cover;
+    height: 100%;
+    padding-left: 5%;
+}
+.pdpSecondMainImage{
+    width: 35%;
+    object-fit: cover;
+    height: 100%;
+    padding-left: 1%;
+}
+.productInfoContainer {
+    width: 30%;
+    margin-left: 4%;
+}
+.productNameAndPriceContainer p{
+    padding: 0px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000;
+}
+.productNameAndPriceContainer p:last-of-type{
+    font-weight: 500;
+}
+.productColorInfoContainer {
+    margin-top: 8%;
+}
+.productColorInfoContainer p {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+}
+.pdpColorInfoImage {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #000;
+    margin-right:5px;
+}
+.productReviewContainer {
+    margin-top: 8%;
+}
+.productReviewContainer p {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+}
+.productShopContainer {
+    display: flex;
+    flex-direction: column;
+    height: 18%;
+    justify-content: space-around;
+}
+.productShopContainer button:first-of-type {
+    background: #fff;
+    border: 1px solid #000;
+}
+.productShopContainer button:last-of-type {
+    background: #000;
+    color: #fff;
+}
+.productDescription {
+    width: 39%;
+    margin-left: 6%;
+    margin-top: 3%;
+}
+.pdpDescriptionImageContainer {
+    width: 97%;
+    margin-left: 6%;
+    margin-top: 3%;
+}
+.pdpDescriptionImage{
+    width: 40%;
+    height:auto
+}
+.productDescription p:first-of-type {
+    padding: 0px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000;
+}
+.productDescription p:last-of-type {
+    padding: 0px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #000;
+}
+@media only screen and (max-width: 600px) {
+    .pdpContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    .imageContainer{
+        width: 95%;
+        height: 300px;
+    }
+    .productInfoContainer {
+        width: 93%;
+    }
+    .productDescription {
+        width: 85%;
+        margin-top: 12%;
+        margin-left: 4%;
+    }
+    .productShopContainer button:first-of-type {
+        margin-bottom: 15px;
+    }
+    .pdpDescriptionImageContainer {
+        margin: auto;
+        width: 93%;
+    }
+    .pdpDescriptionImage {
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,32 @@
+.pdpcarouselHeading{
+    text-align: center;
+    width: 100%;
+    margin-top: 43px;
+    margin-bottom: 10px;
+    font-weight: 200;
+    font-family: sans-serif;
+}
+.pdpcarousel {
+    position: relative;
+    width: 95%;
+    margin: auto;
+}
+.pdpCarouselContainer {
+    width: 97%;
+    margin:auto
+}
+.pdpCarouselContainer .swiper-slide {
+    padding-left: 55px;
+    width: 275.75px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .pdpCarouselContainer {
+        width: 93%;
+        margin:auto
+    }
+    .pdpCarouselContainer .swiper-slide {
+        padding-left: 0px;
+        width: 383px !important;
+    }
+}
