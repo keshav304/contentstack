@@ -7,12 +7,11 @@
     margin-top: 60px;
 }
 .productSectionWidget {
-    width: 300px;
+    width: 46%;
     height: auto;
     display: inline-block;
-    margin: 0 10px;
-    margin-bottom: 10px;
-    cursor:pointer
+    margin: 5px 10px;
+    padding-top: 20px;
 }
 
 .productSectionTitle {
@@ -41,6 +40,6 @@
     .productSectionWidget{
         width: 90%;
         margin: auto;
-        margin-bottom: 100px;
+        margin-bottom: 25px;
     }
 }

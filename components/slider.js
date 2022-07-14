@@ -1,14 +1,16 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
+import Link from "next/link";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 function Slider({ props }) {
+  console.log(props)
   return (
-    <div className="homeSliderContainer">
+    <div className={props ? props.viewtype==='desktop'?"pcHomeSliderContainer":"mbHomeSliderContainer": "pcHomeSliderContainer"}>
       <Swiper
         spaceBetween={30}
         centeredSlides
@@ -27,11 +29,13 @@ function Slider({ props }) {
         {
           props ? props.banners.map((banner) => (
             <SwiperSlide>
+            <Link href={banner.link.href}>
               <img
                 className="sliderImg"
                 alt={banner.image.filename}
                 src={banner.image.url}
               />
+            </Link>
             </SwiperSlide>
           )) : null
         }

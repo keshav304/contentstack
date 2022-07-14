@@ -1,10 +1,10 @@
 .productWidget {
-    width: 230px;
+    width: 276px;
     height: auto;
     display: inline-block;
     margin: 0px 10px;
     padding-top: 20px;
-    cursor:pointer
+    cursor: pointer;
 }
 
 .productTitle {

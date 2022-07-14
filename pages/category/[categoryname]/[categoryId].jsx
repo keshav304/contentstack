@@ -18,13 +18,11 @@ export default function CategoryPage(props) {
   const {
     header, footer, result, entryUrl,
   } = props;
-  console.log({ header, footer, result });
   const { CONTENTSTACK_LIVE_PREVIEW } = getConfig().publicRuntimeConfig;
   const [getHeader, setHeader] = useState(header);
   const [getFooter, setFooter] = useState(footer);
   const [getEntry, setEntry] = useState(result);
   const [prods, setProducts] = React.useState([]);
-
 
   //   const [pdpProduct, setPdpProduct] = useState();
   const router = useRouter();
@@ -69,8 +67,8 @@ export default function CategoryPage(props) {
       const { uid, _content_type_uid } = productsArray[i];
       if (prods.length < productsArray.length) {
         fetchProduct(uid, _content_type_uid).then((response) => {
-            setProducts(products);
-            products.push(response);
+          setProducts(products);
+          products.push(response);
         });
       }
     }
@@ -96,27 +94,24 @@ export default function CategoryPage(props) {
 
   useEffect(() => {
     getProducts();
-    // getCategories();
   }, []);
-  console.log(prods, prods.length)
-  // const {page_components} = result;
-  // const {PLP_Products_Section : { _metadata : {uid} }}= page_components[0]
   return (
     prods
       ? (
         <Layout header={getHeader} footer={getFooter} page={result}>
-          <CategorySection props={result.page_components[0].Sidebar} />
+          <CategorySection props={result.page_components[0].Sidebar} currentCategory={categoryId}/>
           <div className="category-info">
-            <h3>{categoryname.split("-").join(" ")}</h3>
+            <h3>{categoryname.split("-").map((element) => element[0].toUpperCase() + element.slice(1, element.length)).join(" ")}</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus massa mauris, at auctor nulla gravida in. Nullam eget massa egestas, blandit nisl vel, porttitor nisl.
             </p>
           </div>
           <div className="category-products">
             {prods ? prods.map((prod) => {
-          if (prod.entry.category[0].uid === categoryId) {
-              return <ProductWidget product={prod.entry} />
-          }
+              if (prod.entry.category[0].uid === categoryId) {
+                return <ProductWidget product={prod.entry} />;
+              }
+              return null;
             }) : null}
           </div>
         </Layout>

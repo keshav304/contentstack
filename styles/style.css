@@ -142,6 +142,9 @@ footer a {
   color: #222222;
   padding: 12px;
 }
+.footer-logo {
+  width: 130px;
+}
 
 .footer-div {
   display: flex;

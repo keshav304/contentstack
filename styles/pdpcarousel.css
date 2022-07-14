@@ -12,8 +12,17 @@
     margin: auto;
 }
 .pdpCarouselContainer {
-    width: 97%;
+    width: 98%;
     margin:auto
+}
+.pdpCarouselContainer .productWidget {
+    width: 270px;
+    height: auto;
+    display: inline-block;
+    margin: 0px -1px;
+    padding-top: 20px;
+    cursor: pointer;
+    
 }
 .pdpCarouselContainer .swiper-slide {
     padding-left: 55px;

@@ -1,8 +1,11 @@
-.homeSliderContainer {
-    width: 77%;
-    margin-left: 19%;
-    margin-top:35px;
+.pcHomeSliderContainer {
+    width: 78.8%;
+    margin-left: 17.6%;
+    margin-top: 35px;
     margin-bottom: 75px;
+}
+.mbHomeSliderContainer {
+    display:none
 }
 .sliderImg {
     height: auto;
@@ -10,11 +13,11 @@
     /* margin-left: auto; */
 }
 @media only screen and (max-width: 600px) {
-    .homeSliderContainer {
-        width: 90%;
-        margin: auto;
-        margin-top:35px;
-        margin-bottom: 75px;
+    .pcHomeSliderContainer {
+        display:none
+    }
+    .mbHomeSliderContainer {
+        display:block
     }
     .sliderImg {
         width: 100%; 

@@ -57,7 +57,7 @@ export default function Header(props) {
           </ul>
         </nav>
 
-        <div className="json-preview">
+        {/* <div className="json-preview">
           <Tooltip content="JSON Preview" direction="top">
             <span
               data-bs-toggle="modal"
@@ -66,7 +66,7 @@ export default function Header(props) {
               <img src="/json.svg" alt="JSON Preview icon" />
             </span>
           </Tooltip>
-        </div>
+        </div> */}
       </div>
     </header>
   );

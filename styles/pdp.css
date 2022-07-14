@@ -1,6 +1,6 @@
 .pdpContainer {
     display:flex;
-    margin-top:6%;
+    margin-top:4%;
 }
 .imageContainer {
     width: 55%;
@@ -53,12 +53,15 @@
     margin-right:5px;
 }
 .productReviewContainer {
+    display: flex;
     margin-top: 8%;
 }
 .productReviewContainer p {
     font-weight: 600;
     font-size: 16px;
     color: #000;
+    padding-top: 2px;
+    margin-right: 10px;
 }
 .productShopContainer {
     display: flex;
@@ -69,10 +72,12 @@
 .productShopContainer button:first-of-type {
     background: #fff;
     border: 1px solid #000;
+    padding: 6px 0px;
 }
 .productShopContainer button:last-of-type {
     background: #000;
     color: #fff;
+    padding: 6px 0px;
 }
 .productDescription {
     width: 39%;
@@ -101,6 +106,25 @@
     font-weight: 500;
     font-size: 13px;
     color: #000;
+}
+.pdpheader {
+    display: flex;
+    justify-content: center;
+  }
+.pdpheader .wrapper-logo {
+    flex: 0 0 170px;
+    margin: 20px 0;
+    cursor: pointer;
+  }
+
+  .pdpheader .wrapper-logo img {
+    width: 130px;
+  }
+.pdpCategoriesContainer {
+    display: flex;
+    /* width: 111%; */
+    justify-content: center;
+    align-items: baseline;
 }
 @media only screen and (max-width: 600px) {
     .pdpContainer {
