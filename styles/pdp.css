@@ -35,8 +35,8 @@
     font-size: 20px;
     color: #000;
 }
-.productNameAndPriceContainer p:last-of-type{
-    font-weight: 500;
+.productPrice{
+    font-weight: 500 !important;
 }
 .productColorInfoContainer {
     margin-top: 8%;

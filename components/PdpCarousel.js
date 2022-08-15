@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import getConfig from 'next/config';
+import _ from "lodash";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import { PersonifyXP } from '../personify/sdk';
@@ -62,21 +63,27 @@ export default function PdpCarousel({ props }) {
     setTimeout(() => {
       const p = true;
       if (p) {
-        const config = personifyConfig;
-        config.pages.Demo.isPage = true;
+        const config = _.cloneDeep(personifyConfig);
+        config.pages.pdp.isPage = true;
         const personify = new PersonifyXP(config);
+        personify.init();
         const apiArr = {
           sessionid: personify.getPersonifySessionId(),
           shopperid: personify.getPersonifyShopperId(),
           referrer: personify.getReferrer(),
           pagesize: 5,
+          algorithm: "freeform",
+          overrides: [],
+          slot: "default",
+          rectype: 0,
         };
         const apiJSON = JSON.stringify(apiArr);
         personify.callAPI(apiJSON, "getrecs", (err, response) => {
           const arr = response.recommendations.map((prod) => ({
             entry: {
-              uid: prod.product_code,
-              product_name: prod.product_name,
+              uid: prod.productcode,
+              url: `/product/${prod.name.split(' ').join('-')}`,
+              product_name: prod.name,
               price: prod.price,
               product_image: {
                 url: prod.image,
@@ -92,25 +99,25 @@ export default function PdpCarousel({ props }) {
   const { _metadata: { uid } } = props;
   return (
     <>
-      <h2 className="pdpcarouselHeading">Recommend for you</h2>
+      <h2 className="pdpcarouselHeading">Recommended for you</h2>
       <div className="pdpCarouselContainer">
         <Swiper
           breakpoints={{
             // when window width is >= 320px
             320: {
               slidesPerView: 1,
-              spaceBetween: 10
+              spaceBetween: 10,
             },
             // when window width is >= 480px
             480: {
               slidesPerView: 3,
-              spaceBetween: 1
+              spaceBetween: 1,
             },
             // when window width is >= 640px
             640: {
               slidesPerView: 4,
-              spaceBetween: 1
-            }
+              spaceBetween: 1,
+            },
           }}
           pagination={{
             clickable: true,

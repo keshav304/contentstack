@@ -2,12 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import getConfig from 'next/config';
+import _ from "lodash";
 import { onEntryChange } from '../../../sdk-plugin/index';
 import Layout from '../../../components/layout';
 import RenderComponents from '../../../components/render-components';
 import { getHeaderRes, getFooterRes, getCategoryPageRes } from '../../../helper/index';
 import ProductWidget from "../../../components/product-widget";
 import CategorySection from "../../../components/category-section";
+import { PersonifyXP } from '../../../personify/sdk';
+import { personifyConfig } from '../../../personify/config';
+import RecommendedCategories from '../../../components/recommended-categories';
 
 const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
@@ -23,6 +27,8 @@ export default function CategoryPage(props) {
   const [getFooter, setFooter] = useState(footer);
   const [getEntry, setEntry] = useState(result);
   const [prods, setProducts] = React.useState([]);
+  const [rankedProductList, setRankedProductList] = React.useState([]);
+  const [recommendedCategories, setRecommendedCategories] = React.useState([]);
 
   //   const [pdpProduct, setPdpProduct] = useState();
   const router = useRouter();
@@ -40,11 +46,6 @@ export default function CategoryPage(props) {
       console.error(error);
     }
   }
-  useEffect(() => {
-    onEntryChange(() => {
-      if (CONTENTSTACK_LIVE_PREVIEW === 'true') fetchData();
-    });
-  }, []);
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;
@@ -59,6 +60,41 @@ export default function CategoryPage(props) {
     const json = await response.json();
     return json;
   }
+  useEffect(() => {
+    onEntryChange(() => {
+      if (CONTENTSTACK_LIVE_PREVIEW === 'true') fetchData();
+    });
+  }, []);
+  useEffect(() => {
+    setRecommendedCategories([])
+    setTimeout(() => {
+      const p = true;
+      if (p) {
+        const config = _.cloneDeep(personifyConfig);
+        config.pages.plp.isPage = true;
+        const personify = new PersonifyXP(config);
+        personify.init();
+        const apiArr = {
+          sessionid: personify.getPersonifySessionId(),
+          shopperid: personify.getPersonifyShopperId(),
+          referrer: personify.getReferrer(),
+          pagesize: 4,
+        };
+        const apiJSON = JSON.stringify(apiArr);
+        personify.callAPI(apiJSON, "getcats", (err, response) => {
+          if (response) {
+            const recommendedCategoriesArray = response.recommendations.map((category) => ({
+              entry: {
+                uid: category.name,
+              },
+            }));
+            setRecommendedCategories(recommendedCategoriesArray);
+          }
+        });
+      }
+    }, 3000);
+  }, [categoryId]);
+
   async function getProducts() {
     const products = [];
     const { page_components } = result;
@@ -76,22 +112,6 @@ export default function CategoryPage(props) {
     return prods;
   }
 
-  // async function getCategories() {
-  //   const { page_components } = result;
-  //   const { Sidebar: { reference } } = page_components[0];
-  //   for (let i = 0; i < reference.length; i += 1) {
-  //     const { uid, _content_type_uid } = reference[i];
-  //     if (categories.length < reference.length) {
-  //       fetchProduct(uid, _content_type_uid).then((response) => {
-  //           categoriesArray.push(response);
-  //           setCategories(categoriesArray);
-  //       });
-  //     }
-  //   }
-  //   await Promise.all(prods);
-  //   return prods;
-  // }
-
   useEffect(() => {
     getProducts();
   }, []);
@@ -99,9 +119,9 @@ export default function CategoryPage(props) {
     prods
       ? (
         <Layout header={getHeader} footer={getFooter} page={result}>
-          <CategorySection props={result.page_components[0].Sidebar} currentCategory={categoryId}/>
+          <CategorySection props={result.page_components[0].Sidebar} currentCategory={categoryId} />
           <div className="category-info">
-            <h3>{categoryname.split("-").map((element) => element[0].toUpperCase() + element.slice(1, element.length)).join(" ")}</h3>
+            <h3 id={categoryId}>{categoryname.split("-").map((element) => element[0].toUpperCase() + element.slice(1, element.length)).join(" ")}</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus massa mauris, at auctor nulla gravida in. Nullam eget massa egestas, blandit nisl vel, porttitor nisl.
             </p>
@@ -114,6 +134,7 @@ export default function CategoryPage(props) {
               return null;
             }) : null}
           </div>
+          {recommendedCategories.length === 4 ? <RecommendedCategories recommendedCategories={recommendedCategories} /> : null}
         </Layout>
       )
       : (

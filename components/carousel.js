@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import getConfig from 'next/config';
+import _ from "lodash";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import { PersonifyXP } from '../personify/sdk';
@@ -57,7 +58,7 @@ export default function Carousel(props) {
     setTimeout(() => {
       const p = true;
       if (p) {
-        const config = personifyConfig;
+        const config = _.cloneDeep(personifyConfig);
         config.pages.Demo.isPage = true;
         const personify = new PersonifyXP(config);
         const apiArr = {
@@ -66,13 +67,14 @@ export default function Carousel(props) {
           referrer: personify.getReferrer(),
           pagesize: 5,
         };
+        personify.init();
         const apiJSON = JSON.stringify(apiArr);
         personify.callAPI(apiJSON, "getrecs", (err, response) => {
           const arr = response.recommendations.map((prod) => ({
             entry: {
               uid: prod.productcode,
-              url: `/products/${prod.product_name.split(' ').join('-')}`,
-              product_name: prod.product_name,
+              url: `/product/${prod.name.split(' ').join('-')}`,
+              product_name: prod.name,
               price: prod.price,
               product_image: {
                 url: prod.image,
@@ -88,7 +90,7 @@ export default function Carousel(props) {
   const { products: { _metadata: { uid } } } = props;
   return (
     <>
-      <h2 className="carouselHeading">Recommend for you</h2>
+      <h2 className="carouselHeading">Recommended for you</h2>
       <div id={uid} className="carousel">
         <Swiper
           breakpoints={{

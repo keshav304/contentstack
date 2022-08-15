@@ -8,9 +8,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 function Slider({ props }) {
-  console.log(props)
   return (
-    <div className={props ? props.viewtype==='desktop'?"pcHomeSliderContainer":"mbHomeSliderContainer": "pcHomeSliderContainer"}>
+    <div className={props ? props.viewtype === 'desktop' ? "pcHomeSliderContainer" : "mbHomeSliderContainer" : "pcHomeSliderContainer"}>
       <Swiper
         spaceBetween={30}
         centeredSlides
@@ -28,14 +27,14 @@ function Slider({ props }) {
       >
         {
           props ? props.banners.map((banner) => (
-            <SwiperSlide>
-            <Link href={banner.link.href}>
-              <img
-                className="sliderImg"
-                alt={banner.image.filename}
-                src={banner.image.url}
-              />
-            </Link>
+            <SwiperSlide className="homeBannerSlider" categoryCode={banner.link.href.split('/')[3]}>
+              <Link href={banner.link.href}>
+                <img
+                  className="sliderImg"
+                  alt={banner.image.filename}
+                  src={banner.image.url}
+                />
+              </Link>
             </SwiperSlide>
           )) : null
         }

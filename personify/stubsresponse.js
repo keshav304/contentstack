@@ -11,7 +11,7 @@ const personifyStubsResponse = {
     productcode: "blt3b5236a38c9fb748",
     category: "",
     description: "",
-    url: "/products/Nesting-Coffee-Table",
+    url: "/product/Nesting-Coffee-Table",
   },
   {
     price: 475,
@@ -20,7 +20,7 @@ const personifyStubsResponse = {
     productcode: "blta136f656aaa8ee2b",
     category: "",
     description: "",
-    url: "/products/Dressing-Table",
+    url: "/product/Dressing-Table",
   },
   {
     price: 54,
@@ -29,7 +29,7 @@ const personifyStubsResponse = {
     productcode: "blt21f6384017f08e4a",
     category: "",
     description: "",
-    url: "/products/Vase-with-Glass-Insert",
+    url: "/product/Vase-with-Glass-Insert",
   },
   {
     price: 55,
@@ -38,7 +38,7 @@ const personifyStubsResponse = {
     productcode: "blta3f7f05164903520",
     category: "",
     description: "",
-    url: "/products/Vetro-Table-Lamp",
+    url: "/product/Vetro-Table-Lamp",
   },
   {
     price: 214,
@@ -47,7 +47,7 @@ const personifyStubsResponse = {
     productcode: "blt049db8a1acbe149f",
     category: "",
     description: "",
-    url: "/products/Pendant-Ceiling-Light",
+    url: "/product/Pendant-Ceiling-Light",
   },
   {
     price: 1559,
@@ -56,7 +56,7 @@ const personifyStubsResponse = {
     productcode: "blt72a7e1af9cc841cc",
     category: "",
     description: "",
-    url: "/products/3-Seater-Sofa-Bed",
+    url: "/product/3-Seater-Sofa-Bed",
   },
   ],
 };

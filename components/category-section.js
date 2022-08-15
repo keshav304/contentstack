@@ -44,7 +44,6 @@ function CategorySection(props) {
   useEffect(() => {
     getCategories();
   }, []);
-  console.log({ props });
   // const { _metadata: { uid } } = props;
   return (
     <div className={props.props.heading === "Home" ? "leftCategorycontainer" : "rightCategorycontainer"}>
@@ -56,7 +55,7 @@ function CategorySection(props) {
             .sort((a, b) => a.entry.title.length - b.entry.title.length)
             .map(({ entry: { title, uid: id, link: { href } } }) => (
               <Link href={`${href}/${id}`}>
-                <li className={currentCategory === id ? "currentCategoryTitle" : "categoryTitle"} key={id}>{title}</li>
+                <li className={currentCategory === id ? "currentCategoryTitle" : "categoryTitle"} key={id} categoryCode={id}>{title}</li>
               </Link>
             ))
         }
