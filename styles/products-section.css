@@ -15,9 +15,9 @@
 }
 
 .productSectionTitle {
-    margin-top: 3px;
-    margin-bottom:0px;
-    font-weight: 600;
+    margin: 10px 0 0 0;
+    font-family: Montserrat;
+    font-weight: bold;
 }
 
 .productSectionImage{

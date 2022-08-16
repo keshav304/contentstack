@@ -1,5 +1,5 @@
 .productWidget {
-    width: 276px;
+    width: 282px;
     height: auto;
     display: inline-block;
     margin: 0px 10px;
@@ -8,7 +8,9 @@
 }
 
 .productTitle {
-    margin: 0;
+    margin: 10px 0 0 0;
+    font-family: Montserrat;
+    font-weight: bold;
 }
 
 .productImage{
@@ -18,6 +20,8 @@
 
 .productPrice {
     margin: 3px;
+    font-family: Montserrat;
+    font-weight: bold;
 }
 @media only screen and (max-width: 600px) {
     .productWidget {

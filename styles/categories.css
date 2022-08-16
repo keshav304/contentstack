@@ -73,14 +73,16 @@
 .recommendedCategoriesContainer {
     width: 66%;
     margin-left: 19.6%;
-    margin-top: 3%;
+    margin-top: 6%;
 }
 .recommendedCategoriesContainer p {
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: bold;
+    font-size: 21px;
 }
 .recommendedCategories {
-    display:flex;
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0;
     list-style: none;
 }
 .recommendedCategories p {
