@@ -46,7 +46,7 @@ const RecommendedCategories = (props) => {
   }, []);
   return (
     <div className="recommendedCategoriesContainer">
-      {categories.length > 0 ? <p>you make like these categories as well</p> : null}
+      {categories.length > 0 ? <p>You May Like These Categories</p> : null}
       <div className="recommendedCategories">
         {
             categories.map((category) => <Link href={`${category.entry.link.href}/${category.entry.uid}`}><p key={category.entry.uid}>{category.entry.link.title}</p></Link>)
