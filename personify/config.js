@@ -117,9 +117,9 @@ const personifyConfig = {
       // isPage: isBrowser ? document.location.pathname.indexOf("category/") > -1 : false,
       isPage: false,
       track: true,
-      ranking: true,
-      rankingContainer: isBrowser ? document.querySelector(".category-products") : "",
-      getProductList,
+      // ranking: true,
+      // rankingContainer: isBrowser ? document.querySelector(".category-products") : "",
+      // getProductList,
     },
     Demo: {
       type: "Content",
