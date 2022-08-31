@@ -60,6 +60,7 @@ export default function Carousel(props) {
       if (p) {
         const config = _.cloneDeep(personifyConfig);
         config.pages.Demo.isPage = true;
+        config.pages.Demo.rankingContainer = document.querySelector(".mySwiper >.swiper-wrapper");
         const personify = new PersonifyXP(config);
         const apiArr = {
           sessionid: personify.getPersonifySessionId(),

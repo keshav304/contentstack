@@ -7,7 +7,7 @@ export default function ProductWidget(props) {
     product
       ? (
         <Link href={`${product.url}/${product.uid}`}>
-          <div className="productWidget" productCode={product.uid}>
+          <div className="productWidget" productcode={product.uid}>
             <img
               className="productImage"
               src={product.fromPersonify ? product.product_image.url : product.productimages.productimage[0].url}

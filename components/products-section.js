@@ -1,16 +1,45 @@
 import React, { useEffect } from 'react';
 import getConfig from 'next/config';
 import ProductSectionWidget from "./product-section-widget";
+import { makeDecision } from "../helper/choice.js";
 
 const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
   ? process.env
   : publicRuntimeConfig;
-
-function ProductsSection({ props }) {
+const categoryBehaviours = {
+  bltc91ab475eaafa987: ['Decore', 'Gifts', 'Lights'],
+  blt20c1aa118802242b: ['Furniture', 'Luxury'],
+  blt8143307172f69ca6: ['Furniture', 'Homeware'],
+  bltf8267fd9073b00ed: ['Decore', 'Gifts', 'Homeware'],
+  bltc82faddc7abebcf9: ['Luxury', 'Beds', 'Bedroom', 'Furniture'],
+  blt6ebfb491cf8a5002: ['Homeware'],
+  bltd5b1b9bfd6440b50: ['Kitchen', 'Dining'],
+  bltbbe5086bbf5a7d2f: ['Kitchen', 'Dining'],
+};
+function ProductsSection({ props, personalizationBehaviours, personalizationTags }) {
   const [prods, setProducts] = React.useState([]);
+  const [behaviour, setBehaviour] = React.useState(null);
+  const [behaviouralProducts, setBeahviouralProducts] = React.useState([]);
   const products = [];
-
+  React.useEffect(() => {
+    if (behaviour) {
+      const filteredProds = prods.filter((prod) => {
+        if (categoryBehaviours[prod.entry.category[0].uid].indexOf(behaviour) !== -1) {
+          return prod;
+        }
+      });
+      if (filteredProds.length > 0) {
+        setBeahviouralProducts(filteredProds);
+      }
+    }
+  }, [behaviour]);
+  React.useEffect(() => {
+    if (props) {
+      const updatedbehaviour = makeDecision(personalizationTags, personalizationBehaviours);
+      setBehaviour(updatedbehaviour);
+    }
+  }, [personalizationBehaviours, personalizationTags]);
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;
@@ -46,7 +75,13 @@ function ProductsSection({ props }) {
   }, []);
   return (
     <div className="productsSectionContainer">
-      {prods.map((prod, key) => (
+      {!behaviour && prods.map((prod, key) => (
+        <ProductSectionWidget
+          product={prod.entry}
+          key={key}
+        />
+      ))}
+      {behaviour && behaviouralProducts.length && behaviouralProducts.map((prod, key) => (
         <ProductSectionWidget
           product={prod.entry}
           key={key}

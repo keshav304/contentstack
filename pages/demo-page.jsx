@@ -5,9 +5,9 @@ import Layout from '../components/layout';
 import RenderComponents from '../components/render-components';
 import { getHeaderRes, getFooterRes, getDemoRes } from '../helper/index';
 import Slider from "../components/slider";
+import SliderSidebar from "../components/sliderSidebar";
 
 export default function Demo(props) {
-  
   const {
     header, footer, result, entryUrl,
   } = props;
@@ -15,7 +15,27 @@ export default function Demo(props) {
   const [getHeader, setHeader] = useState(header);
   const [getFooter, setFooter] = useState(footer);
   const [getEntry, setEntry] = useState(result);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [personalizationBehaviours, setPersonalizationBehaviours] = useState([]);
+  const [tags, setTags] = useState([]);
+  const handleClickBehaviour = (name) => {
+    if (personalizationBehaviours.indexOf(name) !== -1) {
+      const filteredBehaviours = personalizationBehaviours.filter((behaviour) => behaviour !== name);
+      setPersonalizationBehaviours(filteredBehaviours);
+    } else {
+      const updatedBehaviour = [...personalizationBehaviours, name];
+      setPersonalizationBehaviours(updatedBehaviour);
+    }
+  };
+  const handleClickTags = (name) => {
+    if (tags.indexOf(name) !== -1) {
+      const filteredTags = tags.filter((tag_name) => tag_name !== name);
+      setTags(filteredTags);
+    } else {
+      const updatedTags = [...tags, name];
+      setTags(updatedTags);
+    }
+  };
   async function fetchData() {
     try {
       console.info('fetching live preview data...');
@@ -37,13 +57,26 @@ export default function Demo(props) {
   }, []);
 
   return (
-    <Layout header={getHeader} footer={getFooter} page={result}>
+    <Layout header={getHeader} footer={getFooter} page={result} 
+    setIsSidebarOpen={setIsOpen} >
+      <SliderSidebar
+        isSidebarOpen={isOpen}
+        setIsSidebarOpen={setIsOpen}
+        personalizationBehaviours={personalizationBehaviours}
+        setPersonalizationBehaviours={setPersonalizationBehaviours}
+        tags={tags}
+        setTags={setTags}
+        handleClickBehaviour={handleClickBehaviour}
+        handleClickTags={handleClickTags}
+      />
       {getEntry?.page_components && (
         <RenderComponents
           pageComponents={getEntry.page_components}
           contentTypeUid="page"
           entryUid={getEntry.uid}
           locale={getEntry.locale}
+          personalizationBehaviours={personalizationBehaviours}
+          personalizationTags={tags}
         />
       )}
       <Slider />

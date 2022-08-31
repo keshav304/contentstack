@@ -19,7 +19,7 @@ import CategoryInfo from "./category-info"
 
 export default function RenderComponents(props) {
   const {
-    pageComponents, blogsPage, about, entryUid, contentTypeUid, locale,
+    pageComponents, blogsPage, about, entryUid, contentTypeUid, locale,personalizationBehaviours,personalizationTags
   } = props;
   return (
     <div data-pageref={entryUid} data-contenttype={contentTypeUid} data-locale={locale}>
@@ -106,6 +106,8 @@ export default function RenderComponents(props) {
             <ProductsSection
               props={component.Product_Section}
               key={`component-${key}`}
+              personalizationBehaviours={personalizationBehaviours}
+              personalizationTags={personalizationTags}
             />
           )
         }
@@ -114,6 +116,8 @@ export default function RenderComponents(props) {
           <Slider
             props={component.Home_Slider}
             key={`component-${key}`}
+            personalizationBehaviours={personalizationBehaviours}
+            personalizationTags={personalizationTags}
           />
         )
       }

@@ -66,12 +66,13 @@ export default function CategoryPage(props) {
     });
   }, []);
   useEffect(() => {
-    setRecommendedCategories([])
+    setRecommendedCategories([]);
     setTimeout(() => {
       const p = true;
       if (p) {
         const config = _.cloneDeep(personifyConfig);
         config.pages.plp.isPage = true;
+        config.pages.plp.rankingContainer=document.querySelector(".category-products");
         const personify = new PersonifyXP(config);
         personify.init();
         const apiArr = {
@@ -111,7 +112,6 @@ export default function CategoryPage(props) {
     await Promise.all(prods);
     return prods;
   }
-
   useEffect(() => {
     getProducts();
   }, []);
@@ -119,6 +119,7 @@ export default function CategoryPage(props) {
     prods
       ? (
         <Layout header={getHeader} footer={getFooter} page={result}>
+ 
           <CategorySection props={result.page_components[0].Sidebar} currentCategory={categoryId} />
           <div className="category-info">
             <h3 id={categoryId}>{categoryname.split("-").map((element) => element[0].toUpperCase() + element.slice(1, element.length)).join(" ")}</h3>

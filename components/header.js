@@ -5,9 +5,13 @@ import parse from "html-react-parser";
 import Tooltip from "./tool-tip";
 
 export default function Header(props) {
-  const { header } = props;
+  const { header,setIsSidebarOpen } = props;
   const router = useRouter();
-
+const handleClick =()=>{
+  if (router.pathname==='/demo-page') {
+    setIsSidebarOpen(true)
+  }
+  }
   return (
     <header className="header">
 
@@ -23,15 +27,15 @@ export default function Header(props) {
           ) : null} */}
 
       <div className="max-width header-div">
-        <div className="wrapper-logo">
-          <Link href="/demo-page" className="logo-tag" title="Contentstack">
+        <div className="wrapper-logo" onClick={handleClick}>
+          {/* <Link className="logo-tag" title="Contentstack"> */}
             <img
               className="logo"
               src={header.logo.url}
               alt={header.title}
               title={header.title}
             />
-          </Link>
+          {/* </Link> */}
         </div>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">

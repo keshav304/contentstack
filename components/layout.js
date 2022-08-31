@@ -8,7 +8,7 @@ import DevTools from "./devtools";
 class Layout extends React.Component {
   render() {
     const {
-      header, footer, page, blogpost, children,
+      header, footer, page, blogpost, children,setIsSidebarOpen
     } = this.props;
 
     const jsonObj = { header, footer };
@@ -75,7 +75,7 @@ class Layout extends React.Component {
             ? metaData(page.seo)
             : null}
         </Head>
-        {header ? <Header header={header} /> : ""}
+        {header ? <Header header={header} setIsSidebarOpen={setIsSidebarOpen}  /> : ""}
         <main className="mainClass">
           {children}
           {Object.keys(jsonObj).length && <DevTools response={jsonObj} />}

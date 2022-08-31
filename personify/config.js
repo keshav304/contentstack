@@ -85,7 +85,7 @@ const personifyConfig = {
           return "";
         }
       },
-      // isPage: isBrowser ? document.location.pathname.indexOf("product/") > -1 : false,
+      // isPage: document.location.pathname.indexOf("product/") > -1,
       isPage: false,
       track: true,
       execute() {
@@ -114,12 +114,13 @@ const personifyConfig = {
           return "";
         }
       },
-      // isPage: isBrowser ? document.location.pathname.indexOf("category/") > -1 : false,
+      // isPage: document.location.pathname.indexOf("category/") > -1,
       isPage: false,
       track: true,
-      // ranking: true,
-      // rankingContainer: isBrowser ? document.querySelector(".category-products") : "",
-      // getProductList,
+      ranking: true,
+      // rankingContainer: document.querySelector(".category-products"),
+      rankingContainer: "",
+      getProductList,
     },
     Demo: {
       type: "Content",
@@ -128,7 +129,7 @@ const personifyConfig = {
       // isPage: isBrowser ? document.location.pathname.indexOf("demo-page") > -1 : false,
       isPage: false,
       track: true,
-      rankingContainer: isBrowser ? document.querySelector(".mySwiper >.swiper-wrapper") : "",
+      rankingContainer: "",
       ranking: true,
       getProductList: getHomePageBannerList,
     },
