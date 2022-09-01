@@ -9,7 +9,6 @@ const envConfig = process.env.CONTENTSTACK_API_KEY
   : publicRuntimeConfig;
 
 const RecommendedCategories = (props) => {
-  console.log({props})
   const [categories, setCategories] = React.useState([]);
   const categoryArray = [];
   async function fetchCategories(uid, content_type) {

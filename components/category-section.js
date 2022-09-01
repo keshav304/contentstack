@@ -11,7 +11,6 @@ function CategorySection(props) {
   const [categories, setCategories] = React.useState([]);
   const categoryArray = [];
   const { currentCategory } = props;
-  console.log('ccc', categories)
   async function fetchCategories(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;

@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import { PersonifyXP } from '../personify/sdk';
 import { personifyConfig } from '../personify/config';
+import { makeDecision } from "../helper/choice.js";
 
 import ProductWidget from "./product-widget";
 
@@ -18,11 +19,56 @@ const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
   ? process.env
   : publicRuntimeConfig;
-
+const categoryBehaviours = {
+  bltc91ab475eaafa987: ['Decore', 'Gifts', 'Lights'],
+  blt20c1aa118802242b: ['Furniture', 'Luxury', 'homeware'],
+  blt8143307172f69ca6: ['Furniture', 'Homeware', 'bedroom'],
+  bltf8267fd9073b00ed: ['Decore', 'Gifts', 'Homeware'],
+  bltc82faddc7abebcf9: ['Luxury', 'Beds', 'Bedroom', 'Furniture'],
+  blt6ebfb491cf8a5002: ['Homeware', 'Furniture'],
+  bltd5b1b9bfd6440b50: ['Kitchen', 'Dining', 'Gifts'],
+  bltbbe5086bbf5a7d2f: ['Kitchen', 'Dining'],
+};
 export default function Carousel(props) {
+  const [initialProds, setinitialProducts] =  React.useState([]);
   const [prods, setProducts] = React.useState([]);
+  const [behaviouralProducts, setBeahviouralProducts] = React.useState([]);
+  const [behaviour, setBehaviour] = React.useState(null);
   const products = [];
+  const { personalizationBehaviours, personalizationTags } = props;
+  React.useEffect(() => {
+    if (props) {
+      const updatedbehaviour = makeDecision(personalizationTags, personalizationBehaviours);
+      setBehaviour(updatedbehaviour);
+    }
+  }, [personalizationBehaviours, personalizationTags]);
+  React.useEffect(() => {
+    if (behaviour) {
+      const filteredProds = prods.filter((prod) => {
+      
+        const filteredProd = initialProds.filter(initialProd=>{
+        console.log(initialProd.entry.uid,prod.entry.uid)
+          if (initialProd.entry.uid===prod.entry.uid) {
+            return initialProd
+          }
+        })
+        if (filteredProd.length===1 && categoryBehaviours[filteredProd[0].entry.category[0].uid].indexOf(behaviour) !== -1) {
+          return prod;
+        }
+      });
+      if (filteredProds.length > 0 && filteredProds.length<4) {
+        const slicedArray = prods.slice(0,4-filteredProds.length)
+        filteredProds.push(...slicedArray)
+        setBeahviouralProducts(filteredProds);
+      }
+      if (filteredProds.length >=4) {
+        setBeahviouralProducts(filteredProds);
+      }
+    }
 
+  }, [behaviour]);
+
+  // console.log('beh', behaviour, initialProds,prods);
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;
@@ -46,6 +92,7 @@ export default function Carousel(props) {
         fetchProduct(uid, _content_type_uid).then((response) => {
           products.push(response);
           setProducts(products);
+          setinitialProducts(products);
         });
       }
     }
@@ -66,7 +113,7 @@ export default function Carousel(props) {
           sessionid: personify.getPersonifySessionId(),
           shopperid: personify.getPersonifyShopperId(),
           referrer: personify.getReferrer(),
-          pagesize: 5,
+          pagesize: 50,
         };
         personify.init();
         const apiJSON = JSON.stringify(apiArr);
@@ -82,7 +129,8 @@ export default function Carousel(props) {
               },
               fromPersonify: true,
             },
-          }));
+          })
+          );
           setProducts(arr);
         });
       }
@@ -118,7 +166,16 @@ export default function Carousel(props) {
         >
           <div className="productContainer">
             <div className="products" style={{ transform: "translateX(0)" }}>
-              {prods.map((prod, key) => (
+              {!behaviour && prods.map((prod, key) => (
+                <SwiperSlide>
+
+                  <ProductWidget
+                    product={prod.entry}
+                    key={key}
+                  />
+                </SwiperSlide>
+              ))}
+              {behaviour && behaviouralProducts.length> 0 && behaviouralProducts.map((prod, key) => (
                 <SwiperSlide>
 
                   <ProductWidget

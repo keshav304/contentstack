@@ -90,6 +90,8 @@ export default function RenderComponents(props) {
             <Carousel
               products={component.Carousel}
               key={`component-${key}`}
+              personalizationBehaviours={personalizationBehaviours}
+              personalizationTags={personalizationTags}
             />
           );
         }
