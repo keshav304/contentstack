@@ -93,7 +93,7 @@ export default function Carousel(props) {
         setBeahviouralProducts(filteredProds);
       }
     }
-  }, [behaviour, behavioursList.length]);
+  }, [behaviour, behavioursList]);
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;
