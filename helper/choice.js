@@ -1,10 +1,11 @@
 const btlist = [
   {
-    val: 0.02,
+    val: 0.1,
     name: "Luxury",
+    d: 1,
   },
   {
-    val: 0.03,
+    val: 0.14,
     name: "Decore",
   },
   {
@@ -21,28 +22,28 @@ const btlist = [
   },
   {
     name: "Dining",
-    val: 0.07861635220125789,
+    val: 0.15,
   },
   {
     name: "Homeware",
-    val: 0.1415094339622642,
+    val: 0.20,
   },
   {
     name: "Lights",
-    val: 0.23584905660377367,
+    val: 0.25,
   },
   {
     name: "Beds",
-    val: 0.07232704402515726,
+    val: 0.16,
   },
   {
     name: "Gifts",
-    val: 0.009433962264150947,
+    val: 0.14,
   },
 ];
 export const makeDecision = (tags, bvs, banners) => {
   if (tags.length === 0 && bvs.length === 0) {
-    return null;
+    return [null, null];
   }
   const arr = [...tags, ...bvs];
   const newarr = arr.map((a) => {
@@ -111,5 +112,5 @@ export const makeDecision = (tags, bvs, banners) => {
     }
     return [banners, mainBehaviour];
   }
-  return mainBehaviour;
+  return [mainBehaviour, sorted];
 };

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import getConfig from 'next/config';
 import ProductSectionWidget from "./product-section-widget";
@@ -20,13 +21,17 @@ const categoryBehaviours = {
 function ProductsSection({ props, personalizationBehaviours, personalizationTags }) {
   const [prods, setProducts] = React.useState([]);
   const [behaviour, setBehaviour] = React.useState(null);
+  const [behavioursList, setBehaviours] = React.useState(null);
   const [behaviouralProducts, setBeahviouralProducts] = React.useState([]);
+
   const products = [];
   React.useEffect(() => {
-    if (behaviour) {
+    if (behavioursList) {
       const filteredProds = prods.filter((prod) => {
-        if (categoryBehaviours[prod.entry.category[0].uid].indexOf(behaviour) !== -1) {
-          return prod;
+        for (const behav of behavioursList) {
+          if (categoryBehaviours[prod.entry.category[0].uid].indexOf(behav.name) !== -1) {
+            return prod;
+          }
         }
       });
       if (filteredProds.length > 0) {
@@ -36,7 +41,8 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
   }, [behaviour]);
   React.useEffect(() => {
     if (props) {
-      const updatedbehaviour = makeDecision(personalizationTags, personalizationBehaviours);
+      const [updatedbehaviour, behaviours] = makeDecision(personalizationTags, personalizationBehaviours);
+      setBehaviours(behaviours);
       setBehaviour(updatedbehaviour);
     }
   }, [personalizationBehaviours, personalizationTags]);

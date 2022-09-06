@@ -45,12 +45,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 const behaviours = [
   {
-      "val": 0.02,
+      "val": 0.1,
       "name": "Luxury",
       "id": 1
   },
   {
-      "val": 0.03,
+      "val": 0.14,
       "name": "Decore",
       "id": 2
   },
@@ -73,23 +73,23 @@ const behaviours = [
 const card_tags = [
   {
       "tag_name": "Dining",
-      "tag_score": 0.07861635220125789
+      "tag_score": 0.15
   },
   {
       "tag_name": "Homeware",
-      "tag_score": 0.1415094339622642
+      "tag_score": 0.20
   },
   {
       "tag_name": "Lights",
-      "tag_score": 0.23584905660377367
+      "tag_score": 0.25
   },
   {
       "tag_name": "Beds",
-      "tag_score": 0.07232704402515726
+      "tag_score": 0.16
   },
   {
       "tag_name": "Gifts",
-      "tag_score": 0.009433962264150947
+      "tag_score": 0.14
   }
 ]
 function ProgressIcon({ value }) {

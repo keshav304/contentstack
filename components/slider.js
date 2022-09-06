@@ -46,7 +46,7 @@ function Slider({ props, personalizationBehaviours, personalizationTags }) {
         className="mySwiper"
       >
         {
-          banners.map((banner) => (
+          banners && banners.map((banner) => (
             <SwiperSlide className="homeBannerSlider" categoryCode={banner.link.href.split('/')[3]}>
               <Link href={banner.link.href}>
                 <img
