@@ -87,13 +87,7 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
           key={key}
         />
       ))}
-      {behaviour && behaviouralProducts.length>0 && behaviouralProducts.length<=10 && behaviouralProducts.slice(0,).map((prod, key) => (
-        <ProductSectionWidget
-          product={prod.entry}
-          key={key}
-        />
-      ))}
-      {behaviour && behaviouralProducts.length>0 && behaviouralProducts.length>10 && behaviouralProducts.slice(0,10).map((prod, key) => (
+      {behaviour && behaviouralProducts.length>0 && behaviouralProducts.slice(0,).map((prod, key) => (
         <ProductSectionWidget
           product={prod.entry}
           key={key}
