@@ -34,7 +34,7 @@ export default function Carousel(props) {
   const [prods, setProducts] = React.useState([]);
   const [behaviouralProducts, setBeahviouralProducts] = React.useState([]);
   const [behaviour, setBehaviour] = React.useState(null);
-  const [behavioursList, setBehaviours] = React.useState(null);
+  const [behavioursList, setBehaviours] = React.useState([]);
   const products = [];
   const { personalizationBehaviours, personalizationTags } = props;
   React.useEffect(() => {
@@ -93,7 +93,7 @@ export default function Carousel(props) {
         setBeahviouralProducts(filteredProds);
       }
     }
-  }, [behaviour,behavioursList.length]);
+  }, [behaviour, behavioursList.length]);
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;
