@@ -16,6 +16,7 @@ import Slider from "./slider";
 import Pdp from "./Pdp"
 import PdpCarousel from "./PdpCarousel"
 import CategoryInfo from "./category-info"
+import DynamicContent from "./dynamic-content";
 
 export default function RenderComponents(props) {
   const {
@@ -153,6 +154,14 @@ export default function RenderComponents(props) {
               props={component.PLP_Category_Info}
               key={`component-${key}`}
             />
+          )
+      }
+      if (component.dynamic_content) {
+        return (
+           <DynamicContent
+            props={component.dynamic_content}
+            key={`component-${key}`}
+           />
           )
       }
       })}

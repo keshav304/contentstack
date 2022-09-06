@@ -44,33 +44,56 @@ export default function Carousel(props) {
       setBehaviours(behaviours);
     }
   }, [personalizationBehaviours, personalizationTags]);
+  const findProduct = (pid) => {
+    const filteredProd = initialProds.filter((initialProd) => {
+      if (initialProd.entry.uid === pid) {
+        return initialProd;
+      }
+    });
+    return filteredProd
+  }
+  // React.useEffect(() => {
+  //   if (behaviour && behavioursList) {
+  //     console.log(behavioursList,"bl")
+  //     const filteredProds = prods.filter((prod) => {
+  //       const filteredProd = findProduct(prod.entry.uid)
+  //       const prodsArray = []
+  //       for (const behav of behavioursList) {
+  //         console.log('behave', behav.name)
+  //         console.log('fp',filteredProd)
+  //         if (filteredProd.length === 1 && categoryBehaviours[filteredProd[0].entry.category[0].uid].indexOf(behav.name) !== -1) {
+  //           prodsArray.push(prod);
+  //         }   
+  //       }
+  //       console.log({prodsArray})
+  //       return prodsArray
+  //     });
+  //     console.log({filteredProds})
+  //     if (filteredProds.length >= 0 && filteredProds.length < 6) {
+  //       console.log("hey there")
+  //       const slicedArray = prods.slice(0, 6 - filteredProds.length);
+  //       filteredProds.push(...slicedArray);
+  //       setBeahviouralProducts(filteredProds);
+  //     }
+  //     if (filteredProds.length >= 4) {
+  //       setBeahviouralProducts(filteredProds);
+  //     }
+  //   }
+  // }, [behaviour]);
   React.useEffect(() => {
-    if (behaviour && behavioursList) {
-      const filteredProds = prods.filter((prod) => {
-        const filteredProd = initialProds.filter((initialProd) => {
-          if (initialProd.entry.uid === prod.entry.uid) {
-            return initialProd;
-          }
-        });
-        const prodsArray = []
-        for (const behav of behavioursList) {
-          if (filteredProd.length === 1 && categoryBehaviours[filteredProd[0].entry.category[0].uid].indexOf(behav.name) !== -1) {
-            prodsArray.push(prod);
+    if (behavioursList) {
+      const filteredProds = initialProds.filter((prod) => {
+        for (const behave of behavioursList) {
+          if (categoryBehaviours[prod.entry.category[0].uid].indexOf(behave.name) !== -1) {
+            return prod;
           }
         }
-        return prodsArray
       });
-      if (filteredProds.length > 0 && filteredProds.length < 6) {
-        const slicedArray = prods.slice(0, 6 - filteredProds.length);
-        filteredProds.push(...slicedArray);
-        setBeahviouralProducts(filteredProds);
-      }
-      if (filteredProds.length >= 4) {
+      if (filteredProds.length > 0) {
         setBeahviouralProducts(filteredProds);
       }
     }
   }, [behaviour]);
-
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;
@@ -115,7 +138,7 @@ export default function Carousel(props) {
           sessionid: personify.getPersonifySessionId(),
           shopperid: personify.getPersonifyShopperId(),
           referrer: personify.getReferrer(),
-          pagesize: 30,
+          pagesize: 20,
         };
         personify.init();
         const apiJSON = JSON.stringify(apiArr);
@@ -176,7 +199,7 @@ export default function Carousel(props) {
                   />
                 </SwiperSlide>
               ))}
-              {behaviour && behaviouralProducts.length > 0 && behaviouralProducts.map((prod, key) => (
+              {behaviour && behaviouralProducts.length > 0 && behaviouralProducts.slice(0,15).map((prod, key) => (
                 <SwiperSlide>
 
                   <ProductWidget
