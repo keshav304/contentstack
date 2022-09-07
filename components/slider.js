@@ -22,7 +22,8 @@ function Slider({ props, personalizationBehaviours, personalizationTags }) {
   React.useEffect(() => {
     if (props) {
       const updatedBanners = makeDecision(personalizationTags, personalizationBehaviours, banners);
-      if (updatedBanners) {
+      console.log({updatedBanners})
+      if (updatedBanners[0]) {
         setBanners(updatedBanners[0]);
       }
     }

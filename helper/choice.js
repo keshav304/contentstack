@@ -59,16 +59,44 @@ export const makeDecision = (tags, bvs, banners) => {
   const sorted = newarr.sort(((a, b) => b.val - a.val));
   const mainBehaviour = sorted[0].name;
   if (banners && mainBehaviour) {
-    if (mainBehaviour === 'Decore' || mainBehaviour === 'Gifts' || mainBehaviour === 'Homeware' || mainBehaviour === 'Lights') {
+    if (mainBehaviour === 'Homeware') {
+      const list = banners.map((b) => {
+        if (b.link.title.toLowerCase() === 'livingroomnormal') {
+          b.index = 0;
+        }
+        if (b.link.title.toLowerCase() === 'livingroomluxury') {
+          b.index = 1;
+        }
+        if (b.link.title.toLowerCase() === 'bed') {
+          b.index = 2;
+        }
+        if (b.link.title.toLowerCase() === 'kitchen') {
+          b.index = 3;
+        }
+        if (b.link.title.toLowerCase() === 'decore') {
+          b.index = 4;
+        }
+        return b;
+      });
+      const sortedList = list.sort(((a, b) => a.index - b.index));
+      return [sortedList, mainBehaviour];
+    }
+    if (mainBehaviour === 'Decore' || mainBehaviour === 'Gifts') {
       const list = banners.map((b) => {
         if (b.link.title.toLowerCase() === 'decore') {
           b.index = 0;
         }
-        if (b.link.title.toLowerCase() === 'bed') {
+        if (b.link.title.toLowerCase() === 'livingroomnormal') {
           b.index = 1;
         }
-        if (b.link.title.toLowerCase() === 'kitchen') {
+        if (b.link.title.toLowerCase() === 'livingroomluxury') {
           b.index = 2;
+        }
+        if (b.link.title.toLowerCase() === 'kitchen') {
+          b.index = 3;
+        }
+        if (b.link.title.toLowerCase() === 'bed') {
+          b.index = 4;
         }
         return b;
       });
@@ -80,31 +108,64 @@ export const makeDecision = (tags, bvs, banners) => {
         if (b.link.title.toLowerCase() === 'kitchen') {
           b.index = 0;
         }
-
-        if (b.link.title.toLowerCase() === 'decore') {
+        if (b.link.title.toLowerCase() === 'livingroomluxury') {
           b.index = 1;
         }
-        if (b.link.title.toLowerCase() === 'bed') {
+        if (b.link.title.toLowerCase() === 'decore') {
           b.index = 2;
+        }
+        if (b.link.title.toLowerCase() === 'livingroomnormal') {
+          b.index = 3;
+        }
+        if (b.link.title.toLowerCase() === 'bed') {
+          b.index = 4;
         }
         return b;
       });
-
       const sortedList = list.sort(((a, b) => a.index - b.index));
       return [sortedList, mainBehaviour];
     }
-    if (mainBehaviour === 'Bedroom' || mainBehaviour === 'Beds' || mainBehaviour === 'Luxury' || mainBehaviour === 'Furniture') {
+    if (mainBehaviour === 'Bedroom' || mainBehaviour === 'Beds' || mainBehaviour === 'Furniture') {
       const list = banners.map((b) => {
         if (b.link.title.toLowerCase() === 'bed') {
           b.index = 0;
         }
-        if (b.link.title.toLowerCase() === 'decore') {
+        if (b.link.title.toLowerCase() === 'livingroomluxury') {
           b.index = 1;
         }
-        if (b.link.title.toLowerCase() === 'kitchen') {
+        if (b.link.title.toLowerCase() === 'livingroomnormal') {
           b.index = 2;
         }
-
+        if (b.link.title.toLowerCase() === 'kitchen') {
+          b.index = 3;
+        }
+        if (b.link.title.toLowerCase() === 'decore') {
+          b.index = 4;
+        }
+        return b;
+      });
+      const sortedList = list.sort(((a, b) => a.index - b.index));
+      return [sortedList, mainBehaviour];
+    }
+    if (mainBehaviour === 'Luxury' || mainBehaviour === 'Lights') {
+      const list = banners.map((b) => {
+        if (b.link.title.toLowerCase() === 'livingroomluxury') {
+          b.index = 0;
+        }
+        if (b.link.title.toLowerCase() === 'kitchen') {
+          b.index = 1;
+        }
+        
+        if (b.link.title.toLowerCase() === 'livingroomnormal') {
+          b.index = 4;
+        }
+        if (b.link.title.toLowerCase() === 'bed') {
+          b.index = 3;
+        }
+        
+        if (b.link.title.toLowerCase() === 'decore') {
+          b.index = 2;
+        }
         return b;
       });
       const sortedList = list.sort(((a, b) => a.index - b.index));

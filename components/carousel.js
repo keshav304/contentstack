@@ -44,14 +44,14 @@ export default function Carousel(props) {
       setBehaviours(behaviours);
     }
   }, [personalizationBehaviours, personalizationTags]);
-  const findProduct = (pid) => {
-    const filteredProd = initialProds.filter((initialProd) => {
-      if (initialProd.entry.uid === pid) {
-        return initialProd;
-      }
-    });
-    return filteredProd
-  }
+  // const findProduct = (pid) => {
+  //   const filteredProd = initialProds.filter((initialProd) => {
+  //     if (initialProd.entry.uid === pid) {
+  //       return initialProd;
+  //     }
+  //   });
+  //   return filteredProd
+  // }
   // React.useEffect(() => {
   //   if (behaviour && behavioursList) {
   //     console.log(behavioursList,"bl")
@@ -93,7 +93,7 @@ export default function Carousel(props) {
         setBeahviouralProducts(filteredProds);
       }
     }
-  }, [behaviour, behavioursList]);
+  }, [behaviour,behavioursList]);
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;
