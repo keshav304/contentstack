@@ -6,6 +6,7 @@ import RenderComponents from '../components/render-components';
 import { getHeaderRes, getFooterRes, getDemoRes } from '../helper/index';
 import Slider from "../components/slider";
 import SliderSidebar from "../components/sliderSidebar";
+import SidebarOpenBtn from "../components/assets/sidebar-btn.png";
 
 export default function Demo(props) {
   const {
@@ -57,17 +58,24 @@ export default function Demo(props) {
   }, []);
 
   return (
-    <Layout header={getHeader} footer={getFooter} page={result} 
-    setIsSidebarOpen={setIsOpen} >
+    <Layout
+      header={getHeader}
+      footer={getFooter}
+      page={result}
+    >
+      <div className="homeInfoContainer">
+        <div className="sidebarIcon">
+        <img src='https://i.imgur.com/CnW2LF0.png' onClick={()=>setIsOpen(true)}/>
+        <h2>Home</h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Pellentesque in feugiat nulla. Integer a augue ut leo cursus convallis.</p>
+      </div>
       <SliderSidebar
         isSidebarOpen={isOpen}
         setIsSidebarOpen={setIsOpen}
-        personalizationBehaviours={personalizationBehaviours}
         setPersonalizationBehaviours={setPersonalizationBehaviours}
-        tags={tags}
         setTags={setTags}
-        handleClickBehaviour={handleClickBehaviour}
-        handleClickTags={handleClickTags}
       />
       {getEntry?.page_components && (
         <RenderComponents

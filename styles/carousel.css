@@ -18,6 +18,9 @@
     overflow: hidden;
     margin: 0 5%;
 }
+.swiper-pagination {
+    display: none;
+}
 @media only screen and (max-width: 600px) {
     .carouselHeading{
         margin-left: 0px;

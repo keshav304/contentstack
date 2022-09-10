@@ -163,7 +163,6 @@ export default function Carousel(props) {
   const { products: { _metadata: { uid } } } = props;
   return (
     <>
-      <h2 className="carouselHeading">Recommended for you</h2>
       <div id={uid} className="carousel">
         <Swiper
           breakpoints={{
