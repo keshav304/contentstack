@@ -12,12 +12,19 @@ export default function ProductSectionWidget(props) {
           src={product.productimages?.productimage[0]?.url}
           alt={product.product_name}
         />
-        <p className="productSectionTitle">
-          {product.product_name}
-        </p>
-        <p className="productSectionPrice">
-          {`£${product.price}`}
-        </p>
+        <div className="productTitlePriceContainer">
+          <div>
+            <p className="productSectionTitle">
+              {product.product_name}
+            </p>
+            <p className="productdescription">
+              dolor sit amet
+            </p>
+          </div>
+          <p className="productSectionPrice">
+            {`£${product.price}`}
+          </p>
+        </div>
       </div>
     </Link>
   );

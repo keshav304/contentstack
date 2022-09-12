@@ -13,12 +13,19 @@ export default function ProductWidget(props) {
               src={product.fromPersonify ? product.product_image.url : product.productimages.productimage[0].url}
               alt={product.product_name}
             />
-            <p className="productTitle">
-              {product.product_name}
-            </p>
-            <p className="productPrice">
-              {`£${product.price}`}
-            </p>
+            <div className="productTitlePriceContainer">
+              <div>
+                <p className="productTitle">
+                  {product.product_name}
+                </p>
+                <p className="productdescription">
+                  dolor sit amet
+                </p>
+              </div>
+              <p className="productPrice">
+                {`£${product.price}`}
+              </p>
+            </div>
           </div>
         </Link>
       ) : null

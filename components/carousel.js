@@ -63,7 +63,7 @@ export default function Carousel(props) {
   //         console.log('fp',filteredProd)
   //         if (filteredProd.length === 1 && categoryBehaviours[filteredProd[0].entry.category[0].uid].indexOf(behav.name) !== -1) {
   //           prodsArray.push(prod);
-  //         }   
+  //         }
   //       }
   //       console.log({prodsArray})
   //       return prodsArray
@@ -93,7 +93,7 @@ export default function Carousel(props) {
         setBeahviouralProducts(filteredProds);
       }
     }
-  }, [behaviour,behavioursList]);
+  }, [behaviour, behavioursList]);
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
     const api = `https://cdn.contentstack.io/v3/content_types/${content_type}/entries/${uid}?environment=${envConfig.CONTENTSTACK_ENVIRONMENT}`;
@@ -162,55 +162,53 @@ export default function Carousel(props) {
   }, []);
   const { products: { _metadata: { uid } } } = props;
   return (
-    <>
-      <div id={uid} className="carousel">
-        <Swiper
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            480: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            640: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation
-          speed={500}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <div className="productContainer">
-            <div className="products" style={{ transform: "translateX(0)" }}>
-              {!behaviour && prods.slice(0,6).map((prod, key) => (
-                <SwiperSlide>
+    <div id={uid} className="carousel">
+      <Swiper
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation
+        speed={500}
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <div className="productContainer">
+          <div className="products" style={{ transform: "translateX(0)" }}>
+            {!behaviour && prods.slice(0, 6).map((prod, key) => (
+              <SwiperSlide>
 
-                  <ProductWidget
-                    product={prod.entry}
-                    key={key}
-                  />
-                </SwiperSlide>
-              ))}
-              {behaviour && behaviouralProducts.length > 0 && behaviouralProducts.slice(0,15).map((prod, key) => (
-                <SwiperSlide>
+                <ProductWidget
+                  product={prod.entry}
+                  key={key}
+                />
+              </SwiperSlide>
+            ))}
+            {behaviour && behaviouralProducts.length > 0 && behaviouralProducts.slice(0, 15).map((prod, key) => (
+              <SwiperSlide>
 
-                  <ProductWidget
-                    product={prod.entry}
-                    key={key}
-                  />
-                </SwiperSlide>
-              ))}
-            </div>
+                <ProductWidget
+                  product={prod.entry}
+                  key={key}
+                />
+              </SwiperSlide>
+            ))}
           </div>
-        </Swiper>
-      </div>
-    </>
+        </div>
+      </Swiper>
+    </div>
   );
 }

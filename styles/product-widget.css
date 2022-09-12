@@ -23,6 +23,14 @@
     font-family: Montserrat;
     font-weight: bold;
 }
+.productTitlePriceContainer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.productTitlePriceContainer p {
+    color: #000000;
+}
 @media only screen and (max-width: 600px) {
     .productWidget {
         width: 100%;
