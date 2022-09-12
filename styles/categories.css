@@ -25,6 +25,7 @@
 .categoryTitle {
     cursor:pointer;
     list-style: none;
+    font-size: 17px;
 }
 .currentCategoryTitle {
     color: #000;

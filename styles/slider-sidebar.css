@@ -70,35 +70,34 @@
     color: #6941C6;
     background: #FBF7FF;
     border-radius: 46px;
-    width: 61px;
-    text-align: center;
+    width: 71px;
 }
 .Decore .MuiFormControlLabel-label {
     color:  #027948;
     background: #ECFDF3;
     border-radius: 46px;
-    width: 61px;
+    width: 71px;
     text-align: center;
 }
 .Furniture .MuiFormControlLabel-label {
     color: #175CD3;
     background: #EFF8FF;
     border-radius: 46px;
-    width: 66px;
+    width: 77px;
     text-align: center;
 }
 .Bedroom .MuiFormControlLabel-label {
     color: #5A5ED7;
     background: #EEF4FF;
     border-radius: 46px;
-    width: 65px;
+    width: 92px;
     text-align: center;
 }
 .Kitchen .MuiFormControlLabel-label {
     color: #C21977;
     background: #FDF2FA;
     border-radius: 46px;
-    width: 64px;
+    width: 74px;
     text-align: center;
 }
 .sidebar-logo {
@@ -112,7 +111,7 @@
     background: #aab0c2;
     width: 100%;
     position: absolute;
-    top: 299px;
+    top: 43.5%;
     left: 0px;
 }
 .hrSecond {
@@ -120,15 +119,18 @@
     background: #aab0c2;
     width: 100%;
     position: absolute;
-    top: 345px;
+    top: 50%;
     left: 0px;
+    text-align: center;
+}
+.Decore .MuiFormControlLabel-label {
 }
 .hrThird {
     height: 3px !important;
     background: #aab0c2;
     width: 100%;
     position: absolute;
-    top: 604px;
+    top: 88.2%;
     left: 0px;
 }
 .hrFourth {
@@ -136,7 +138,7 @@
     background: #aab0c2;
     width: 100%;
     position: absolute;
-    top: 654px;
+    top: 94.9%;
     left: 0px;
 }
 .cardTagsSubmitContainer {
@@ -173,4 +175,7 @@
     top: 65.5%;
     color: #b6afa2;
     right: 10%;
+}
+.MuiFormControlLabel-root {
+    margin-right: 0px !important;
 }

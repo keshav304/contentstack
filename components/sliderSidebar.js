@@ -383,7 +383,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Luxury"
+                    label="10% Luxury"
                     labelPlacement="end"
                     className="Luxury"
                   />
@@ -402,7 +402,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Furniture"
+                    label="23% Furniture"
                     labelPlacement="end"
                     className="Furniture"
                   />
@@ -419,7 +419,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Bedroom"
+                    label="30% Bedroom"
                     labelPlacement="end"
                     className="Bedroom"
                   />
@@ -438,7 +438,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Decore"
+                    label="14% Decore"
                     labelPlacement="end"
                     className="Decore"
                   />
@@ -455,7 +455,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Kitchen"
+                    label="23% Kitchen"
                     labelPlacement="end"
                     className="Kitchen"
                   />
@@ -502,7 +502,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Dining"
+                    label="15% Dining"
                     labelPlacement="end"
                     className="Luxury"
                   />
@@ -521,7 +521,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Lights"
+                    label="35% Lights"
                     labelPlacement="end"
                     className="Furniture"
                   />
@@ -538,7 +538,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Homeware"
+                    label="20% Homeware"
                     labelPlacement="end"
                     className="Bedroom"
                   />
@@ -557,7 +557,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Beds"
+                    label="16% Beds"
                     labelPlacement="end"
                     className="Decore"
                   />
@@ -574,7 +574,7 @@ function SliderSidebar({
                         }}
                       />
                     )}
-                    label="Gifts"
+                    label="14% Gifts"
                     labelPlacement="end"
                     className="Kitchen"
                   />
