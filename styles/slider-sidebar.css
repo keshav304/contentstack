@@ -18,10 +18,10 @@
     border-radius: 73px !important;
 }
 .sidebarCard {
-    margin-top: 60px;
+    margin-top: 85px;
 }
 .secondSidebarCard {
-    margin-top: 19px;
+    margin-top: 35px;
 }
 .sidebarCardHeading {
     display: flex;
@@ -119,18 +119,16 @@
     background: #aab0c2;
     width: 100%;
     position: absolute;
-    top: 50%;
+    top: 49.9%;
     left: 0px;
     text-align: center;
-}
-.Decore .MuiFormControlLabel-label {
 }
 .hrThird {
     height: 3px !important;
     background: #aab0c2;
     width: 100%;
     position: absolute;
-    top: 88.2%;
+    top: 86.2%;
     left: 0px;
 }
 .hrFourth {
@@ -138,11 +136,11 @@
     background: #aab0c2;
     width: 100%;
     position: absolute;
-    top: 94.9%;
+    top: 93.5%;
     left: 0px;
 }
 .cardTagsSubmitContainer {
-    margin-top: 10px;
+    margin-top: 16px;
     display: flex;
     justify-content: space-between;
 }
@@ -166,13 +164,13 @@
 }
 .bvsProgressValue{
     position: absolute;
-    top: 20.8%;
+    top: 22.4%;
     color: #b6afa2;
     right: 10%;
 }
 .tagsProgressValue{
     position: absolute;
-    top: 65.5%;
+    top: 63%;
     color: #b6afa2;
     right: 10%;
 }
