@@ -20,18 +20,20 @@ export default function Header(props) {
               </div>
             </div>
           ) : null} */}
-
+          <h1>Personify XP Demo</h1>
+{/* 
       <div className="max-width header-div">
-        <div className="wrapper-logo" >
-          <Link className="logo-tag" title="Contentstack" href="/demo-page">
+        <div className="wrapper-logo" > */}
+          {/* <Link className="logo-tag" title="Contentstack" href="/demo-page">
             <img
               className="logo"
               src={header.logo.url}
               alt={header.title}
               title={header.title}
             />
-          </Link>
-        </div>
+          </Link> */}
+          {/* <h1></h1? */}
+        {/* </div>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="navicon" />
@@ -54,7 +56,7 @@ export default function Header(props) {
               </li>
             ))}
           </ul>
-        </nav>
+        </nav> */}
 
         {/* <div className="json-preview">
           <Tooltip content="JSON Preview" direction="top">
@@ -66,7 +68,7 @@ export default function Header(props) {
             </span>
           </Tooltip>
         </div> */}
-      </div>
+      {/* </div> */}
     </header>
   );
 }

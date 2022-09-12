@@ -10,7 +10,8 @@
 .productTitle {
     margin: 10px 0 0 0;
     font-family: Montserrat;
-    font-weight: bold;
+    font-weight: 100;
+    font-size: 18px;
 }
 
 .productImage{
@@ -21,16 +22,16 @@
 .productPrice {
     margin: 3px;
     font-family: Montserrat;
-    font-weight: bold;
+    font-size:18px;
+    color: #676767;
+    font-weight: 100
 }
 .productTitlePriceContainer {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
 }
-.productTitlePriceContainer p {
-    color: #000000;
-}
+
 @media only screen and (max-width: 600px) {
     .productWidget {
         width: 100%;

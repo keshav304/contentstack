@@ -27,17 +27,19 @@
     display: flex;
 }
 .sidebarCardInfoHeading {
-    text-align: center;
+    text-align: left;
     font-weight: 700;
-    font-size: 13px;
-    margin: 0px 18px;
+    font-size: 16px;
+    margin: 0px 8px;
     color: #000;
 }
 .sidebarCardInfoSubHeading {
-    text-align: center;
+    text-align: left;
     font-weight: 700;
-    font-size: 7px;
+    font-size: 11px;
     color: #000;
+    margin: 0px;
+    margin-left:6px;
 }
 .customTarget {
     font-style: normal;
@@ -138,7 +140,7 @@
     left: 0px;
 }
 .cardTagsSubmitContainer {
-    margin-top: 15px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
@@ -159,4 +161,16 @@
     padding-right: 10px;
     padding-top: 1.4px;
     padding-bottom: 3px;
+}
+.bvsProgressValue{
+    position: absolute;
+    top: 20.8%;
+    color: #b6afa2;
+    right: 10%;
+}
+.tagsProgressValue{
+    position: absolute;
+    top: 65.5%;
+    color: #b6afa2;
+    right: 10%;
 }

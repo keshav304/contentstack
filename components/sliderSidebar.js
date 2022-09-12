@@ -92,7 +92,7 @@ const card_tags = [
   },
   {
     tag_name: "Lights",
-    tag_score: 0.25,
+    tag_score: 0.35,
   },
   {
     tag_name: "Beds",
@@ -178,7 +178,8 @@ function SliderSidebar({
   setTags,
 }) {
   const classes = useStyles();
-  const [progress, setProgress] = React.useState(50);
+  const [bvsProgress, setBvsProgress] = React.useState(0);
+  const [tagsProgress, setTagsProgress] = React.useState(0);
   const [state, setState] = React.useState({
     Luxury: false,
     Decore: false,
@@ -189,76 +190,157 @@ function SliderSidebar({
     Homeware: false,
     Lights: false,
     Gifts: false,
-    Beds: false
+    Beds: false,
   });
-  
 
-  const handleChange = (name) => (event) => {
+  const handleChange = (type, name) => (event) => {
     setState({ ...state, [name]: event.target.checked });
+    if (type === 'behaviours') {
+      let bvs = bvsProgress;
+      if (name === "Luxury") {
+        if (event.target.checked === true) {
+          bvs += 10;
+        } else {
+          bvs -= 10;
+        }
+      }
+      if (name === "Decore") {
+        if (event.target.checked === true) {
+          bvs += 14;
+        } else {
+          bvs -= 14;
+        }
+      }
+      if (name === "Bedroom") {
+        if (event.target.checked === true) {
+          bvs += 30;
+        } else {
+          bvs -= 30;
+        }
+      }
+      if (name === "Furniture") {
+        if (event.target.checked === true) {
+          bvs += 23;
+        } else {
+          bvs -= 23;
+        }
+      }
+      if (name === "Kitchen") {
+        if (event.target.checked === true) {
+          bvs += 23;
+        } else {
+          bvs -= 23;
+        }
+      }
+      setBvsProgress(bvs);
+    }
+    if (type === 'tags') {
+      let tags = tagsProgress;
+      if (name === "Lights") {
+        if (event.target.checked === true) {
+          tags += 35;
+        } else {
+          tags -= 35;
+        }
+      }
+      if (name === "Dining") {
+        if (event.target.checked === true) {
+          tags += 15;
+        } else {
+          tags -= 15;
+        }
+      }
+      if (name === "Homeware") {
+        if (event.target.checked === true) {
+          tags += 20;
+        } else {
+          tags -= 20;
+        }
+      }
+      if (name === "Beds") {
+        if (event.target.checked === true) {
+          tags += 16;
+        } else {
+          tags -= 16;
+        }
+      }
+      if (name === "Gifts") {
+        if (event.target.checked === true) {
+          tags += 14;
+        } else {
+          tags -= 14;
+        }
+      }
+      setTagsProgress(tags);
+    }
   };
 
-  const handleCancel=(type)=>{
-    console.log('cancel')
-    if (type==='tags') {
-      setState({ ...state,     
-        "Dining": false,
-        "Homeware": false,
-        "Lights": false,
-        "Gifts": false,
-        "Beds": false });
+  const handleCancel = (type) => {
+    if (type === 'tags') {
+      setState({
+        ...state,
+        Dining: false,
+        Homeware: false,
+        Lights: false,
+        Gifts: false,
+        Beds: false,
+      });
+      setTagsProgress(0);
     }
-    if (type==='behaviour') {
-      setState({ ...state,     
-        "Luxury": false,
-        "Decore": false,
-        "Bedroom": false,
-        "Furniture": false,
-        "Kitchen": false});
+    if (type === 'behaviour') {
+      setState({
+        ...state,
+        Luxury: false,
+        Decore: false,
+        Bedroom: false,
+        Furniture: false,
+        Kitchen: false,
+      });
+      setBvsProgress(0);
     }
-  }
-  
-  const handleApply=(type)=>{
-    if (type==='behaviour') {
-      const bvs=[]
-      if (state["Luxury"]===true) {
-        bvs.push("Luxury")
+  };
+
+  const handleApply = (type) => {
+    if (type === 'behaviour') {
+      const bvs = [];
+      if (state.Luxury === true) {
+        bvs.push("Luxury");
       }
-      if (state["Decore"]===true) {
-        bvs.push("Decore")
+      if (state.Decore === true) {
+        bvs.push("Decore");
       }
-      if (state["Bedroom"]===true) {
-        bvs.push("Bedroom")
+      if (state.Bedroom === true) {
+        bvs.push("Bedroom");
       }
-      if (state["Furniture"]===true) {
-        bvs.push("Furniture")
+      if (state.Furniture === true) {
+        bvs.push("Furniture");
       }
-      if (state["Kitchen"]===true) {
-        bvs.push("Kitchen")
+      if (state.Kitchen === true) {
+        bvs.push("Kitchen");
       }
-      console.log({bvs})
-      setPersonalizationBehaviours(bvs)
+      setPersonalizationBehaviours(bvs);
     }
-    if (type==='tags') {
-      const tgs=[]
-      if (state["Dining"]===true) {
-        tgs.push("Dining")
+    if (type === 'tags') {
+      const tgs = [];
+      if (state.Dining === true) {
+        tgs.push("Dining");
       }
-      if (state["Lights"]===true) {
-        tgs.push("Lights")
+      if (state.Lights === true) {
+        tgs.push("Lights");
       }
-      if (state["Beds"]===true) {
-        tgs.push("Beds")
+      if (state.Beds === true) {
+        tgs.push("Beds");
       }
-      if (state["Homeware"]===true) {
-        tgs.push("Homeware")
+      if (state.Homeware === true) {
+        tgs.push("Homeware");
       }
-      if (state["Gifts"]===true) {
-        tgs.push("Gifts")
+      if (state.Gifts === true) {
+        tgs.push("Gifts");
       }
-      console.log({tgs})
-      setPersonalizationBehaviours(tgs)
+      setTags(tgs);
     }
-  }
+    setIsSidebarOpen(false);
+  };
   return (
     <div>
       <Drawer
@@ -279,10 +361,10 @@ function SliderSidebar({
               <p className="sidebarCardInfoHeading">Add Targeting Behaviours</p>
               <p className="sidebarCardInfoSubHeading">Targeting below 80% helps more your audience.</p>
             </div>
-            <ClearIcon className={classes.clearicon} />
           </div>
           <Box sx={{ width: '100%' }}>
-            <LinearProgress variant="determinate" value={progress} />
+            <LinearProgress variant="determinate" value={bvsProgress} />
+            <p className="bvsProgressValue">{bvsProgress}%</p>
           </Box>
           <div>
             <p className="customTarget">Custom Targets</p>
@@ -293,7 +375,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Luxury}
-                        onChange={handleChange("Luxury")}
+                        onChange={handleChange("behaviours", "Luxury")}
                         value="Luxury"
                         style={{
                           transform: "scale(0.8)",
@@ -311,7 +393,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Furniture}
-                        onChange={handleChange("Furniture")}
+                        onChange={handleChange("behaviours", "Furniture")}
                         value="Furniture"
                         style={{
                           transform: "scale(0.8)",
@@ -329,7 +411,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Bedroom}
-                        onChange={handleChange("Bedroom")}
+                        onChange={handleChange("behaviours", "Bedroom")}
                         value="Bedroom"
                         style={{
                           transform: "scale(0.8)",
@@ -348,7 +430,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Decore}
-                        onChange={handleChange("Decore")}
+                        onChange={handleChange("behaviours", "Decore")}
                         value="Decore"
                         style={{
                           transform: "scale(0.8)",
@@ -365,7 +447,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Kitchen}
-                        onChange={handleChange("Kitchen")}
+                        onChange={handleChange("behaviours", "Kitchen")}
                         value="Kitchen"
                         style={{
                           transform: "scale(0.8)",
@@ -385,8 +467,8 @@ function SliderSidebar({
           <div className="cardTagsSubmitContainer">
             <p>Save Tags</p>
             <div className="cardTagsSubmitBtnContainer">
-              <button className="cardTagsCancelBtn" onClick={()=>handleCancel('behaviour')}>Cancel</button>
-              <button className="cardTagsApplyBtn" onClick={()=>handleApply('behaviour')}>Apply</button>
+              <button className="cardTagsCancelBtn" onClick={() => handleCancel('behaviour')}>Reset</button>
+              <button className="cardTagsApplyBtn" onClick={() => handleApply('behaviour')}>Apply</button>
             </div>
           </div>
           <hr className="hrSecond" />
@@ -398,10 +480,10 @@ function SliderSidebar({
               <p className="sidebarCardInfoHeading">Add Targeting Tags</p>
               <p className="sidebarCardInfoSubHeading">Targeting below 80% helps more your audience.</p>
             </div>
-            <ClearIcon className={classes.clearicon} />
           </div>
           <Box sx={{ width: '100%' }}>
-            <LinearProgress variant="determinate" value={progress} />
+            <LinearProgress variant="determinate" value={tagsProgress} />
+            <p className="tagsProgressValue">{tagsProgress}%</p>
           </Box>
           <div>
             <p className="customTarget">Custom Targets</p>
@@ -412,7 +494,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Dining}
-                        onChange={handleChange("Dining")}
+                        onChange={handleChange("tags", "Dining")}
                         value="Dining"
                         style={{
                           transform: "scale(0.8)",
@@ -430,7 +512,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Lights}
-                        onChange={handleChange("Lights")}
+                        onChange={handleChange("tags", "Lights")}
                         value="Lights"
                         style={{
                           transform: "scale(0.8)",
@@ -448,7 +530,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Homeware}
-                        onChange={handleChange("Homeware")}
+                        onChange={handleChange("tags", "Homeware")}
                         value="Homeware"
                         style={{
                           transform: "scale(0.8)",
@@ -467,7 +549,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Beds}
-                        onChange={handleChange("Beds")}
+                        onChange={handleChange("tags", "Beds")}
                         value="Beds"
                         style={{
                           transform: "scale(0.8)",
@@ -484,7 +566,7 @@ function SliderSidebar({
                     control={(
                       <CheckboxWithGreenCheck
                         checked={state.Gifts}
-                        onChange={handleChange("Gifts")}
+                        onChange={handleChange("tags", "Gifts")}
                         value="Gifts"
                         style={{
                           transform: "scale(0.8)",
@@ -504,8 +586,8 @@ function SliderSidebar({
           <div className="cardTagsSubmitContainer">
             <p>Save Tags</p>
             <div className="cardTagsSubmitBtnContainer">
-            <button className="cardTagsCancelBtn" onClick={()=>handleCancel('tags')}>Cancel</button>
-              <button className="cardTagsApplyBtn" onClick={()=>handleApply('tags')}>Apply</button>
+              <button className="cardTagsCancelBtn" onClick={() => handleCancel('tags')}>Reset</button>
+              <button className="cardTagsApplyBtn" onClick={() => handleApply('tags')}>Apply</button>
             </div>
           </div>
           <hr className="hrFourth" />

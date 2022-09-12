@@ -30,7 +30,7 @@ const btlist = [
   },
   {
     name: "Lights",
-    val: 0.25,
+    val: 0.35,
   },
   {
     name: "Beds",
@@ -155,14 +155,14 @@ export const makeDecision = (tags, bvs, banners) => {
         if (b.link.title.toLowerCase() === 'kitchen') {
           b.index = 1;
         }
-        
+
         if (b.link.title.toLowerCase() === 'livingroomnormal') {
           b.index = 4;
         }
         if (b.link.title.toLowerCase() === 'bed') {
           b.index = 3;
         }
-        
+
         if (b.link.title.toLowerCase() === 'decore') {
           b.index = 2;
         }

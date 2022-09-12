@@ -17,9 +17,14 @@
 .productSectionTitle {
     margin: 10px 0 0 0;
     font-family: Montserrat;
-    font-weight: bold;
+    font-weight: 100;
+    font-size: 18px;
 }
-
+.productdescription {
+    font-size: 15px;
+    color: #676767;
+    font-weight: 100
+}
 .productSectionImage{
     width: 100%;
     height: auto;
@@ -27,7 +32,9 @@
 
 .productSectionPrice {
     margin-top: 2px;
-    font-weight: 600;
+    font-size:18px;
+    color: #676767;
+    font-weight: 100
 }
 @media only screen and (max-width: 600px) {
     .productsSectionContainer{

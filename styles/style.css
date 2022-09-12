@@ -78,10 +78,14 @@ nav ul li a {
 
 header {
   background: #fff;
-  position: sticky;
   top: 0;
   z-index: 9;
   margin-bottom: 50px;
+}
+header h1 {
+  text-align: center;
+  margin-bottom: 0px;
+  font-size: 28px;
 }
 
 header .max-width {
