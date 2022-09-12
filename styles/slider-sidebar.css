@@ -18,10 +18,17 @@
     border-radius: 73px !important;
 }
 .sidebarCard {
-    margin-top: 85px;
+    margin-top: 60px;
+}
+.sidebarCard > div {
+    padding: 0px 16px;
 }
 .secondSidebarCard {
-    margin-top: 35px;
+    margin-top: 19px;
+}
+.secondSidebarCard > div {
+    padding: 0px 16px;
+
 }
 .sidebarCardHeading {
     display: flex;
@@ -71,6 +78,11 @@
     background: #FBF7FF;
     border-radius: 46px;
     width: 71px;
+    color:  #027948;
+    background: #ECFDF3;
+    border-radius: 46px;
+    width: 71px;
+    text-align: center;
 }
 .Decore .MuiFormControlLabel-label {
     color:  #027948;
@@ -104,43 +116,38 @@
     position: absolute;
     width: 58%;
     left: 20%;
+    padding: 16px;
 }
 
 .hrFirst {
     height: 3px !important;
     background: #aab0c2;
-    width: 100%;
-    position: absolute;
-    top: 43.5%;
-    left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 .hrSecond {
     height: 3px !important;
     background: #aab0c2;
     width: 100%;
-    position: absolute;
-    top: 49.9%;
-    left: 0px;
-    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 .hrThird {
     height: 3px !important;
     background: #aab0c2;
     width: 100%;
-    position: absolute;
-    top: 86.7%;
-    left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 .hrFourth {
     height: 3px !important;
     background: #aab0c2;
     width: 100%;
-    position: absolute;
-    top: 93.7%;
-    left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 .cardTagsSubmitContainer {
-    margin-top: 16px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
@@ -163,17 +170,27 @@
     padding-bottom: 3px;
 }
 .bvsProgressValue{
-    position: absolute;
-    top: 22.4%;
     color: #b6afa2;
-    right: 10%;
+    margin: 0px;
+    position: absolute;
+    right: 9%;
 }
 .tagsProgressValue{
-    position: absolute;
-    top: 65.8%;
     color: #b6afa2;
-    right: 10%;
+    margin: 0px;
+    position: absolute;
+    right: 9%;
 }
 .MuiFormControlLabel-root {
     margin-right: 0px !important;
+}
+.makeStyles-drawerPaper-2 {
+    padding: 0px !important;
+}
+.MuiBox-root {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.MuiLinearProgress-root {
+    width: 100% !important;
 }
