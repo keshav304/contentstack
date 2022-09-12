@@ -9,7 +9,6 @@
 
 .productTitle {
     margin: 10px 0 0 0;
-    font-family: Montserrat;
     font-weight: 100;
     font-size: 18px;
 }
@@ -21,7 +20,6 @@
 
 .productPrice {
     margin: 3px;
-    font-family: Montserrat;
     font-size:18px;
     color: #676767;
     font-weight: 100
