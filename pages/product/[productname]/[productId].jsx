@@ -98,16 +98,7 @@ export default function productDetailPage(props) {
       ? (
         <Layout footer={getFooter} page={result}>
           <div className="pdpheader">
-            <div className="wrapper-logo">
-              <Link href="/demo-page" className="logo-tag" title="Contentstack">
-                <img
-                  className="logo"
-                  src={header.logo.url}
-                  alt={header.title}
-                  title={header.title}
-                />
-              </Link>
-            </div>
+          <h1>Personify XP Demo</h1>
           </div>
           <div className="pdpCategoriesContainer">
             <Link href="/demo-page"><li className="categoryTitle">Home</li></Link>

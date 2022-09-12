@@ -109,7 +109,15 @@
     display: flex;
     justify-content: center;
   }
-.pdpheader .wrapper-logo {
+  
+
+.pdpheader h1 {
+    text-align: center;
+    margin-bottom: 0px;
+    font-size: 28px;
+  }
+  
+/* .pdpheader .wrapper-logo {
     flex: 0 0 170px;
     margin: 20px 0;
     cursor: pointer;
@@ -117,7 +125,7 @@
 
   .pdpheader .wrapper-logo img {
     width: 130px;
-  }
+  } */
 .pdpCategoriesContainer {
     display: flex;
     /* width: 111%; */
