@@ -27,7 +27,7 @@
 .sidebarIcon {
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 9px;
     left: 0;
     width: 78.8%;
