@@ -63,9 +63,9 @@ export default function Demo(props) {
       footer={getFooter}
       page={result}
     >
-      <div className="homeInfoContainer">
+      <div className={isOpen ? "homeInfoContainerSidebarOpen":"homeInfoContainerSidebarClosed"}>
         <div className="sidebarIcon">
-        <img src='https://i.imgur.com/CnW2LF0.png' onClick={()=>setIsOpen(true)}/>
+        <img src='https://i.imgur.com/CnW2LF0.png' onClick={(state)=>setIsOpen(!state)}/>
         <h2>Home</h2>
         </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
