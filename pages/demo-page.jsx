@@ -40,7 +40,7 @@ export default function Demo(props) {
   };
   const listenScrollEvent = e => {
     if (window.scrollY < 125 && window.isOpen) {
-      document.querySelector('.sidebarIcon').style.marginLeft = '23.6%'
+      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%'
     }
     if (window.scrollY < 125 && !window.isOpen) {
       document.querySelector('.sidebarIcon').style.marginLeft = '17.6%'
@@ -55,7 +55,7 @@ export default function Demo(props) {
   useEffect(()=>{
     window.isOpen=isOpen
   if (isOpen && window.scrollY < 125) {
-    document.querySelector('.sidebarIcon').style.marginLeft='23.6%'
+    document.querySelector('.sidebarIcon').style.marginLeft='20.6%'
   } 
   if (!isOpen && window.scrollY < 125) {
     document.querySelector('.sidebarIcon').style.marginLeft="17.6%"
