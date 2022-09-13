@@ -27,22 +27,23 @@
 .sidebarIcon {
     display: flex;
     align-items: center;
-    position: sticky;
+    position: absolute;
     top: 9px;
     left: 0;
     width: 78.8%;
-    margin-left: 17.6%;
+    margin-left: 0.6%;
+    z-index: 9999;
 }
 .sidebarIcon img {
-    width: 44px;
-    height: 46px;
+    width: 53px;
+    height: 100%;
+    margin-right: 5px;
 }
-.sidebarIcon h2 {
+.h1Home {
     font-family: sans-serif;
     font-weight: 400;
-    margin-bottom: 0;
-    margin-left: 8px;
-    color: #000
+    color: #000;
+    margin-bottom:0px
 }
 @media only screen and (max-width: 600px) {
     .pcHomeSliderContainer {

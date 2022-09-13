@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import getConfig from 'next/config';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
 const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
@@ -9,6 +10,7 @@ const envConfig = process.env.CONTENTSTACK_API_KEY
 
 function CategorySection(props) {
   const [categories, setCategories] = React.useState([]);
+  const router = useRouter()
   const categoryArray = [];
   const { currentCategory } = props;
   async function fetchCategories(uid, content_type) {
@@ -43,11 +45,9 @@ function CategorySection(props) {
   useEffect(() => {
     getCategories();
   }, []);
-  // const { _metadata: { uid } } = props;
-  // console.log(props,"xxx")
   return (
     <div className={props.props.heading === "Home" ? "leftCategorycontainer" : "rightCategorycontainer"}>
-      {props.props.heading ? <Link href="/demo-page"><h2 className={props.props.heading === "Home" ? "leftCategoryHeading" : "rightCategoryHeading"}>{props.props.heading}</h2></Link> : null}
+      {props.props.heading ? <Link href="/demo-page"><div  className={props.props.heading === "Home" ? "leftCategoryHeading" : "rightCategoryHeading"}><p className={router.pathname==="/demo-page"?"leftcatheading":null}>{props.props.heading}</p></div></Link> : null}
       <ul className={props.props.heading === "Home" ? "leftCategories" : "rightCategories"}>
         {
           // eslint-disable-next-line max-len

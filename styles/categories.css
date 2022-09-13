@@ -16,6 +16,9 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+.leftcatheading {
+    border-bottom: black solid;
+}
 .rightCategoryHeading{
     text-align: center;
     margin-left: auto;

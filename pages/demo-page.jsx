@@ -39,14 +39,19 @@ export default function Demo(props) {
     }
   };
   const listenScrollEvent = (e) => {
-    if (window.scrollY < 125 && window.isOpen) {
-      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
-    }
-    if (window.scrollY < 125 && !window.isOpen) {
-      document.querySelector('.sidebarIcon').style.marginLeft = '17.6%';
-    }
-    if (window.scrollY > 125 && !window.isOpen) {
+    if (window.scrollY < 130 && !window.isOpen) {
+      document.querySelector('.sidebarIcon').style.position = 'absolute';
+      document.querySelector('.h1Home').style.display = 'none';
       document.querySelector('.sidebarIcon').style.marginLeft = '0.6%';
+    }
+    if (window.scrollY < 130 && window.isOpen) {
+      document.querySelector('.sidebarIcon').style.position = 'sticky';
+      document.querySelector('.h1Home').style.display = 'block';
+      document.querySelector('.sidebarIcon').style.marginLeft = '22.6%';
+
+    }
+    if (window.scrollY > 133 && window.isOpen) {
+      document.querySelector('.h1Home').style.display = 'none';
     }
   };
   useEffect(() => {
@@ -54,11 +59,18 @@ export default function Demo(props) {
   }, []);
   useEffect(() => {
     window.isOpen = isOpen;
-    if (isOpen && window.scrollY < 125) {
-      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
+    if (!isOpen && window.scrollY < 130) {
+      document.querySelector('.sidebarIcon').style.position = 'absolute';
+      document.querySelector('.sidebarIcon').style.marginLeft = '0.6%';
+      document.querySelector('.h1Home').style.display = 'none';
     }
-    if (!isOpen && window.scrollY < 125) {
-      document.querySelector('.sidebarIcon').style.marginLeft = "17.6%";
+    if (isOpen && window.scrollY < 130) {
+      document.querySelector('.sidebarIcon').style.position = 'sticky';
+      document.querySelector('.h1Home').style.display = 'block';
+      document.querySelector('.sidebarIcon').style.marginLeft = '22.6%';
+    }
+    if (isOpen && window.scrollY > 133) {
+      document.querySelector('.h1Home').style.display = 'none';
     }
   }, [isOpen]);
   async function fetchData() {
@@ -89,10 +101,11 @@ export default function Demo(props) {
     >
       <div className="sidebarIcon">
         <img src="https://i.imgur.com/CnW2LF0.png" onClick={() => setIsOpen(!isOpen)} />
-        <h2>Home</h2>
+        <h2 className="h1Home">Home</h2>
+
       </div>
       <div className="homeInfoContainer">
-
+{/* <h2 className="h2home">Home</2> */}
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Pellentesque in feugiat nulla. Integer a augue ut leo cursus convallis.
