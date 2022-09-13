@@ -345,6 +345,7 @@ function SliderSidebar({
     <div>
       <Drawer
         anchor="left"
+        variant="persistent"
         open={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         className={classes.drawer}
