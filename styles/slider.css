@@ -33,6 +33,7 @@
     width: 78.8%;
     margin-left: 0.6%;
     z-index: 9999;
+    cursor:pointer
 }
 .sidebarIcon img {
     width: 53px;
