@@ -147,6 +147,21 @@
 }
 .cardTagsSubmitContainer {
     margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.cardTagsSubmitBtnContainer {
+    display: flex;
+    width: 50%;
+    align-items: center;
+}
+.cardTagsSubmitContainer p {
+    width: 55%;
+    margin-bottom: 0px;
+}
+.cardTagsSubmitContainer {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
@@ -193,6 +208,17 @@
 .MuiLinearProgress-root {
     width: 100% !important;
 }
-.jss2 {
+.MuiDrawer-paper {
     padding: 0px !important;
+}
+.closedrawer {
+    width: 25%;
+    margin-left: auto;
+    margin-right: 5%;
+    margin-top: 6%;
+    border: none;
+    color: white;
+    background: black;
+    background: #0F147D;
+    border-radius: 7px;
 }

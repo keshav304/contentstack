@@ -22,29 +22,29 @@ function getProductList() {
   }
   return productList;
 }
-function getHomePageBannerList() {
-  const pList = document.querySelector(".swiper-wrapper").querySelectorAll(".homeBannerSlider");
-  const bannerCategoryList = [];
-  for (let i = 0; i < pList.length; i++) {
-    const pContainer = pList[i];
-    let fixed = false;
-    const sId = `sid${i}`;
-    const pCode = pContainer.getAttribute("categorycode");
-    if (pContainer.className?.includes("tag-promoted") || i < 3) {
-      fixed = false;
-    }
-    pContainer.classList.add(sId);
-    const bannerCategory = {
-      sid: sId,
-      id: pCode,
-      fixed,
-      type: "CONTENT",
-      element: pContainer,
-    };
-    bannerCategoryList.push(bannerCategory);
-  }
-  return bannerCategoryList;
-}
+// function getHomePageBannerList() {
+//   const pList = document.querySelector(".swiper-wrapper").querySelectorAll(".homeBannerSlider");
+//   const bannerCategoryList = [];
+//   for (let i = 0; i < pList.length; i++) {
+//     const pContainer = pList[i];
+//     let fixed = false;
+//     const sId = `sid${i}`;
+//     const pCode = pContainer.getAttribute("categorycode");
+//     if (pContainer.className?.includes("tag-promoted") || i < 3) {
+//       fixed = false;
+//     }
+//     pContainer.classList.add(sId);
+//     const bannerCategory = {
+//       sid: sId,
+//       id: pCode,
+//       fixed,
+//       type: "CONTENT",
+//       element: pContainer,
+//     };
+//     bannerCategoryList.push(bannerCategory);
+//   }
+//   return bannerCategoryList;
+// }
 const personifyConfig = {
   pages: {
     pdp: {
@@ -129,9 +129,9 @@ const personifyConfig = {
       // isPage: isBrowser ? document.location.pathname.indexOf("demo-page") > -1 : false,
       isPage: false,
       track: true,
-      rankingContainer: "",
-      ranking: true,
-      getProductList: getHomePageBannerList,
+      // rankingContainer: "",
+      // ranking: true,
+      // getProductList: getHomePageBannerList,
     },
   },
   api: "https://pgki7qvro2.execute-api.us-east-1.amazonaws.com/contentstack-us-realtime-prod",

@@ -466,7 +466,7 @@ function SliderSidebar({
           </div>
           <hr className="hrFirst" />
           <div className="cardTagsSubmitContainer">
-            <p>Save Tags</p>
+            <p>Save Behaviours</p>
             <div className="cardTagsSubmitBtnContainer">
               <button className="cardTagsCancelBtn" onClick={() => handleCancel('behaviour')}>Reset</button>
               <button className="cardTagsApplyBtn" onClick={() => handleApply('behaviour')}>Apply</button>
@@ -593,7 +593,7 @@ function SliderSidebar({
           </div>
           <hr className="hrFourth" />
         </div>
-
+        <button onClick={() => setIsSidebarOpen(false)} className="closedrawer">Close</button>
       </Drawer>
     </div>
   );

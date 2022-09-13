@@ -20,7 +20,7 @@ export default function Header(props) {
               </div>
             </div>
           ) : null} */}
-          <h1>Personify XP Demo</h1>
+          <Link href="/demo-page"><h1>Personify XP Demo</h1></Link>
 {/* 
       <div className="max-width header-div">
         <div className="wrapper-logo" > */}

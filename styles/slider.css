@@ -12,23 +12,11 @@
     width: 100%;
     /* margin-left: auto; */
 }
-.homeInfoContainerSidebarClosed {
+.homeInfoContainer {
     width: 78.8%;
     margin-left: 17.6%;
 }
-.homeInfoContainerSidebarOpen {
-    width: 78.8%;
-    margin-left: 21%;
-}
-.homeInfoContainerSidebarOpen p {
-    font-family: sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-    color: #000000;
-    margin-top: 14px;
-    width: 70%;
-}
-.homeInfoContainerSidebarClosed p {
+.homeInfoContainer p {
     font-family: sans-serif;
     font-weight: 500;
     font-size: 18px;
@@ -39,6 +27,11 @@
 .sidebarIcon {
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 9px;
+    left: 0;
+    width: 78.8%;
+    margin-left: 17.6%;
 }
 .sidebarIcon img {
     width: 44px;

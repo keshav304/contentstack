@@ -21,6 +21,7 @@ export default function Demo(props) {
   const [tags, setTags] = useState([]);
   const handleClickBehaviour = (name) => {
     if (personalizationBehaviours.indexOf(name) !== -1) {
+      // eslint-disable-next-line max-len
       const filteredBehaviours = personalizationBehaviours.filter((behaviour) => behaviour !== name);
       setPersonalizationBehaviours(filteredBehaviours);
     } else {
@@ -37,6 +38,29 @@ export default function Demo(props) {
       setTags(updatedTags);
     }
   };
+  const listenScrollEvent = e => {
+    if (window.scrollY < 125 && window.isOpen) {
+      document.querySelector('.sidebarIcon').style.marginLeft = '23.6%'
+    }
+    if (window.scrollY < 125 && !window.isOpen) {
+      document.querySelector('.sidebarIcon').style.marginLeft = '17.6%'
+    }
+    if (window.scrollY > 125 && !window.isOpen) {
+      document.querySelector('.sidebarIcon').style.marginLeft = '0.6%'
+    }
+  }
+  useEffect(()=>{
+    window.addEventListener('scroll', listenScrollEvent)
+  },[])
+  useEffect(()=>{
+    window.isOpen=isOpen
+  if (isOpen && window.scrollY < 125) {
+    document.querySelector('.sidebarIcon').style.marginLeft='23.6%'
+  } 
+  if (!isOpen && window.scrollY < 125) {
+    document.querySelector('.sidebarIcon').style.marginLeft="17.6%"
+  }
+  },[isOpen])
   async function fetchData() {
     try {
       console.info('fetching live preview data...');
@@ -63,11 +87,12 @@ export default function Demo(props) {
       footer={getFooter}
       page={result}
     >
-      <div className={isOpen ? "homeInfoContainerSidebarOpen":"homeInfoContainerSidebarClosed"}>
-        <div className="sidebarIcon">
+            <div className="sidebarIcon">
         <img src='https://i.imgur.com/CnW2LF0.png' onClick={()=>setIsOpen(!isOpen)}/>
         <h2>Home</h2>
         </div>
+          <div className="homeInfoContainer">
+
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         Pellentesque in feugiat nulla. Integer a augue ut leo cursus convallis.</p>
       </div>

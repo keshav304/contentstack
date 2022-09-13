@@ -22,13 +22,11 @@ function Slider({ props, personalizationBehaviours, personalizationTags }) {
   React.useEffect(() => {
     if (props) {
       const updatedBanners = makeDecision(personalizationTags, personalizationBehaviours, banners);
-      console.log({updatedBanners})
       if (updatedBanners[0]) {
         setBanners(updatedBanners[0]);
       }
     }
   }, [personalizationBehaviours, personalizationTags]);
-
   return (
     <div className={props ? props.viewtype === 'desktop' ? "pcHomeSliderContainer" : "mbHomeSliderContainer" : "pcHomeSliderContainer"}>
       <Swiper
