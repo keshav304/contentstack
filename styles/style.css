@@ -6,6 +6,8 @@ body {
   font-size: 14px;
   margin: 0;
   line-height: 22px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {

@@ -43,6 +43,7 @@ function Slider({ props, personalizationBehaviours, personalizationTags }) {
         speed={2000}
         modules={[Pagination, Navigation]}
         className="mySwiper"
+        autoWidth={false}
       >
         {
           banners && banners.map((banner) => (
