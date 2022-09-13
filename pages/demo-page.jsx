@@ -47,7 +47,7 @@ export default function Demo(props) {
     if (window.scrollY < 130 && window.isOpen) {
       document.querySelector('.sidebarIcon').style.position = 'sticky';
       document.querySelector('.h1Home').style.display = 'block';
-      document.querySelector('.sidebarIcon').style.marginLeft = '22.6%';
+      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
 
     }
     if (window.scrollY > 133 && window.isOpen) {
@@ -67,7 +67,7 @@ export default function Demo(props) {
     if (isOpen && window.scrollY < 130) {
       document.querySelector('.sidebarIcon').style.position = 'sticky';
       document.querySelector('.h1Home').style.display = 'block';
-      document.querySelector('.sidebarIcon').style.marginLeft = '22.6%';
+      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
     }
     if (isOpen && window.scrollY > 133) {
       document.querySelector('.h1Home').style.display = 'none';
