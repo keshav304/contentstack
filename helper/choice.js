@@ -103,7 +103,7 @@ export const makeDecision = (tags, bvs, banners) => {
     const sortedList = list.sort(((a, b) => a.index - b.index));
     return [sortedList, mainBehaviour];
   }
-  if (banners && mainBehaviour && sorted.length===0) {
+  if (banners && mainBehaviour) {
     if (mainBehaviour === 'Homeware') {
       const list = banners.map((b) => {
         if (b.link.title.toLowerCase() === 'livingroomnormal') {
@@ -172,11 +172,11 @@ export const makeDecision = (tags, bvs, banners) => {
     }
     if (mainBehaviour === 'Furniture') {
       const list = banners.map((b) => {
-        if (b.link.title.toLowerCase() === 'livingroomnormal') {
-          b.index = 1;
-        }
         if (b.link.title.toLowerCase() === 'livingroomluxury') {
           b.index = 0;
+        }
+        if (b.link.title.toLowerCase() === 'livingroomnormal') {
+          b.index = 1;
         }
         if (b.link.title.toLowerCase() === 'bed') {
           b.index = 2;
