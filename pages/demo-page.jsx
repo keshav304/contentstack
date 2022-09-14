@@ -49,9 +49,12 @@ export default function Demo(props) {
       // document.querySelector('.h1Home').style.display = 'block';
       document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
     }
-    // if (window.scrollY > 133 && window.isOpen) {
-    //   document.querySelector('.h1Home').style.display = 'none';
-    // }
+    if (window.scrollY > 133 && !window.isOpen) {
+      document.querySelector('.sidebarIcon').style.marginLeft = '0.6%';
+    }
+    if (window.scrollY > 133 && window.isOpen) {
+      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
+    }
   };
   useEffect(() => {
     window.addEventListener('scroll', listenScrollEvent);
@@ -67,9 +70,12 @@ export default function Demo(props) {
       // document.querySelector('.h1Home').style.display = 'block';
       document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
     }
-    // if (isOpen && window.scrollY > 133) {
-    //   document.querySelector('.h1Home').style.display = 'none';
-    // }
+    if (!isOpen && window.scrollY > 133) {
+      document.querySelector('.sidebarIcon').style.marginLeft = '0.6%';
+    }
+    if (isOpen && window.scrollY > 133) {
+      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
+    }
   }, [isOpen]);
   async function fetchData() {
     try {

@@ -301,44 +301,40 @@ function SliderSidebar({
   };
 
   const handleApply = (type) => {
-    if (type === 'behaviour') {
-      const bvs = [];
-      if (state.Luxury === true) {
-        bvs.push("Luxury");
-      }
-      if (state.Decore === true) {
-        bvs.push("Decore");
-      }
-      if (state.Bedroom === true) {
-        bvs.push("Bedroom");
-      }
-      if (state.Furniture === true) {
-        bvs.push("Furniture");
-      }
-      if (state.Kitchen === true) {
-        bvs.push("Kitchen");
-      }
-      setPersonalizationBehaviours(bvs);
+    const tgs = [];
+    const bvs = [];
+    if (state.Luxury === true) {
+      bvs.push("Luxury");
     }
-    if (type === 'tags') {
-      const tgs = [];
-      if (state.Dining === true) {
-        tgs.push("Dining");
-      }
-      if (state.Lights === true) {
-        tgs.push("Lights");
-      }
-      if (state.Beds === true) {
-        tgs.push("Beds");
-      }
-      if (state.Homeware === true) {
-        tgs.push("Homeware");
-      }
-      if (state.Gifts === true) {
-        tgs.push("Gifts");
-      }
-      setTags(tgs);
+    if (state.Decore === true) {
+      bvs.push("Decore");
     }
+    if (state.Bedroom === true) {
+      bvs.push("Bedroom");
+    }
+    if (state.Furniture === true) {
+      bvs.push("Furniture");
+    }
+    if (state.Kitchen === true) {
+      bvs.push("Kitchen");
+    }
+    if (state.Dining === true) {
+      tgs.push("Dining");
+    }
+    if (state.Lights === true) {
+      tgs.push("Lights");
+    }
+    if (state.Beds === true) {
+      tgs.push("Beds");
+    }
+    if (state.Homeware === true) {
+      tgs.push("Homeware");
+    }
+    if (state.Gifts === true) {
+      tgs.push("Gifts");
+    }
+    setPersonalizationBehaviours(bvs);
+    setTags(tgs);
     setIsSidebarOpen(false);
   };
   return (
