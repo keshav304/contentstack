@@ -12,6 +12,7 @@
     display: inline-block;
     margin: 5px 10px;
     padding-top: 20px;
+    cursor: pointer;
 }
 
 .productSectionTitle {

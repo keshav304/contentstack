@@ -7,6 +7,9 @@
 .mbHomeSliderContainer {
     display:none
 }
+.mySwiper {
+    cursor: pointer;
+}
 .sliderImg {
     height: auto;
     width: 100%;
