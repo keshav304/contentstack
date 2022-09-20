@@ -126,9 +126,14 @@
     .category-info {
         width: 84%;
         margin-top: 10%;
+        margin-left: 12px;
     }
     .category-products {
-        width: 84%;
-        margin-top: 10%;
+        width: 100%;
+        margin: auto;
+    }
+    .category-products .productWidget {
+        width: 90% !important;
+        margin:auto !important;
     }
 }
