@@ -58,7 +58,7 @@ export const makeDecision = (tags, bvs, banners) => {
   });
   const sorted = newarr.sort(((a, b) => b.val - a.val));
   const mainBehaviour = sorted[0].name;
-  if (banners && sorted.length === 2 && (sorted[0].name==='Furniture' || sorted[0].name==='Luxury') && (sorted[1].name==='Furniture' || sorted[1].name==='Luxury')) {
+  if (banners && sorted.length === 2 && (sorted[0].name === 'Furniture' || sorted[0].name === 'Luxury') && (sorted[1].name === 'Furniture' || sorted[1].name === 'Luxury')) {
     const list = banners.map((b) => {
       if (b.link.title.toLowerCase() === 'livingroomluxury') {
         b.index = 0;
@@ -80,7 +80,7 @@ export const makeDecision = (tags, bvs, banners) => {
     const sortedList = list.sort(((a, b) => a.index - b.index));
     return [sortedList, mainBehaviour];
   }
-  if (banners && sorted.length === 2 && (sorted[0].name==='Furniture' || sorted[0].name==='Decore') && (sorted[1].name==='Furniture' || sorted[1].name==='Decore')) {
+  if (banners && sorted.length === 2 && (sorted[0].name === 'Furniture' || sorted[0].name === 'Decore') && (sorted[1].name === 'Furniture' || sorted[1].name === 'Decore')) {
     const list = banners.map((b) => {
       if (b.link.title.toLowerCase() === 'livingroomnormal') {
         b.index = 0;

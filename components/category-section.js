@@ -10,7 +10,7 @@ const envConfig = process.env.CONTENTSTACK_API_KEY
 
 function CategorySection(props) {
   const [categories, setCategories] = React.useState([]);
-  const router = useRouter()
+  const router = useRouter();
   const categoryArray = [];
   const { currentCategory } = props;
   async function fetchCategories(uid, content_type) {

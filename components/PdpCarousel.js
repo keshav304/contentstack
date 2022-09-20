@@ -10,6 +10,7 @@ import { personifyConfig } from '../personify/config';
 import ProductWidget from "./product-widget";
 import CarouselButtonLeft from './carousel-button-left';
 import CarouselButtonRight from './carousel-button-right';
+import { useMissionRecsContext } from "../context/missionRecs";
 
 // Import Swiper styles
 import "swiper/css";
@@ -25,6 +26,7 @@ const envConfig = process.env.CONTENTSTACK_API_KEY
 
 export default function PdpCarousel({ props }) {
   const [prods, setProducts] = React.useState([]);
+  const [missionRecs, setMissionRecs] = useMissionRecsContext();
   const products = [];
   async function fetchProduct(uid, content_type) {
     console.log("FETCH");
@@ -91,7 +93,9 @@ export default function PdpCarousel({ props }) {
               fromPersonify: true,
             },
           }));
+          const { missions } = response;
           setProducts(arr);
+          setMissionRecs(missions);
         });
       }
     }, 3000);

@@ -19,6 +19,7 @@ export default function Demo(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [personalizationBehaviours, setPersonalizationBehaviours] = useState([]);
   const [tags, setTags] = useState([]);
+
   const handleClickBehaviour = (name) => {
     if (personalizationBehaviours.indexOf(name) !== -1) {
       // eslint-disable-next-line max-len
@@ -39,42 +40,86 @@ export default function Demo(props) {
     }
   };
   const listenScrollEvent = (e) => {
-    if (window.scrollY < 130 && !window.isOpen) {
-      document.querySelector('.sidebarIcon').style.position = 'fixed';
-      // document.querySelector('.h1Home').style.display = 'none';
-      document.querySelector('.sidebarIcon').style.marginLeft = '0.6%';
+    const sidebaricon = document.querySelector('.sidebarIcon');
+    if (window.scrollY < 130 && !window.isOpen && window.screen.width > 600) {
+      if (sidebaricon) {
+        sidebaricon.style.position = 'fixed';
+        sidebaricon.style.marginLeft = '0.6%';
+      }
     }
-    if (window.scrollY < 130 && window.isOpen) {
-      // document.querySelector('.sidebarIcon').style.position = 'sticky';
-      // document.querySelector('.h1Home').style.display = 'block';
-      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
+    if (window.scrollY < 130 && window.isOpen && window.screen.width > 600) {
+      if (sidebaricon) {
+        sidebaricon.style.marginLeft = '20.6%';
+      }
     }
-    if (window.scrollY > 133 && !window.isOpen) {
-      document.querySelector('.sidebarIcon').style.marginLeft = '0.6%';
+    if (window.scrollY > 133 && !window.isOpen && window.screen.width > 600) {
+      if (sidebaricon) {
+        sidebaricon.style.marginLeft = '0.6%';
+      }
     }
-    if (window.scrollY > 133 && window.isOpen) {
-      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
+    if (window.scrollY > 133 && window.isOpen && window.screen.width > 600) {
+      if (sidebaricon) {
+        sidebaricon.style.marginLeft = '20.6%';
+      }
+    }
+    if (window.scrollY < 130 && !window.isOpen && window.screen.width < 600) {
+      if (sidebaricon) {
+        sidebaricon.style.position = 'fixed';
+        sidebaricon.style.marginLeft = '0.6%';
+      }
+    }
+    if (window.scrollY < 130 && window.isOpen && window.screen.width < 600) {
+      if (sidebaricon) {
+        sidebaricon.style.marginLeft = '82%';
+      }
+    }
+    if (window.scrollY > 133 && !window.isOpen && window.screen.width < 600) {
+      if (sidebaricon) {
+        sidebaricon.style.marginLeft = '0.6%';
+      }
+    }
+    if (window.scrollY > 133 && window.isOpen && window.screen.width < 600) {
+      if (sidebaricon) {
+        sidebaricon.style.marginLeft = '82%';
+      }
     }
   };
   useEffect(() => {
     window.addEventListener('scroll', listenScrollEvent);
+    return () => { window.removeEventListener('scroll', listenScrollEvent); };
   }, []);
   useEffect(() => {
     window.isOpen = isOpen;
-    if (!isOpen && window.scrollY < 130) {
-      document.querySelector('.sidebarIcon').style.position = 'fixed';
-      document.querySelector('.sidebarIcon').style.marginLeft = '0.6%';
+    const sidebaricon = document.querySelector('.sidebarIcon');
+    if (!isOpen && window.scrollY < 130 && window.screen.width > 600) {
+      sidebaricon.style.position = 'fixed';
+      sidebaricon.style.marginLeft = '0.6%';
     }
-    if (isOpen && window.scrollY < 130) {
-      // document.querySelector('.sidebarIcon').style.position = 'sticky';
+    if (isOpen && window.scrollY < 130 && window.screen.width > 600) {
+      // sidebaricon.style.position = 'sticky';
       // document.querySelector('.h1Home').style.display = 'block';
-      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
+      sidebaricon.style.marginLeft = '20.6%';
     }
-    if (!isOpen && window.scrollY > 133) {
-      document.querySelector('.sidebarIcon').style.marginLeft = '0.6%';
+    if (!isOpen && window.scrollY > 133 && window.screen.width > 600) {
+      sidebaricon.style.marginLeft = '0.6%';
     }
-    if (isOpen && window.scrollY > 133) {
-      document.querySelector('.sidebarIcon').style.marginLeft = '20.6%';
+    if (isOpen && window.scrollY > 133 && window.screen.width > 600) {
+      sidebaricon.style.marginLeft = '20.6%';
+    }
+    if (!isOpen && window.scrollY < 130 && window.screen.width < 600) {
+      sidebaricon.style.position = 'fixed';
+      sidebaricon.style.marginLeft = '0.6%';
+    }
+    if (isOpen && window.scrollY < 130 && window.screen.width < 600) {
+      // sidebaricon.style.position = 'sticky';
+      // document.querySelector('.h1Home').style.display = 'block';
+      sidebaricon.style.marginLeft = '82%';
+    }
+    if (!isOpen && window.scrollY > 133 && window.screen.width < 600) {
+      sidebaricon.style.marginLeft = '0.6%';
+    }
+    if (isOpen && window.scrollY > 133 && window.screen.width < 600) {
+      sidebaricon.style.marginLeft = '82%';
     }
   }, [isOpen]);
   async function fetchData() {
@@ -96,7 +141,6 @@ export default function Demo(props) {
       if (CONTENTSTACK_LIVE_PREVIEW === 'true') fetchData();
     });
   }, []);
-
   return (
     <Layout
       header={getHeader}
@@ -107,7 +151,7 @@ export default function Demo(props) {
         <img src="https://i.imgur.com/CnW2LF0.png" onClick={() => setIsOpen(!isOpen)} />
       </div>
       <div className="homeInfoContainer">
-      <h2 className="h1Home">Home</h2>
+        <h2 className="h1Home">Home</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Pellentesque in feugiat nulla. Integer a augue ut leo cursus convallis.
@@ -137,6 +181,7 @@ export default function Demo(props) {
 
 export async function getServerSideProps(context) {
   try {
+  console.log("demo",context.req.headers.referer)
     const entryRes = await getDemoRes(context.resolvedUrl);
     const headerRes = await getHeaderRes();
     const footerRes = await getFooterRes();

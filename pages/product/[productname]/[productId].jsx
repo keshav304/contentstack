@@ -26,7 +26,6 @@ export default function productDetailPage(props) {
   const [productCategory, setProductCategory] = useState('');
   const router = useRouter();
   const { productId } = router.query;
-
   async function fetchData() {
     try {
       console.info('fetching live preview data...');
@@ -78,18 +77,18 @@ export default function productDetailPage(props) {
       },
     });
     const json = await response.json();
-    if(json) {
-      const {entry} = json
-      setProductCategory(entry.title)
+    if (json) {
+      const { entry } = json;
+      setProductCategory(entry.title);
     }
     return json;
   }
 
   useEffect(() => {
     if (pdpProduct) {
-      const { category } = pdpProduct
-      const {uid, _content_type_uid} = category[0]
-      fetchCategory(uid, _content_type_uid)
+      const { category } = pdpProduct;
+      const { uid, _content_type_uid } = category[0];
+      fetchCategory(uid, _content_type_uid);
     }
   }, [pdpProduct]);
   const pscprops = { _metadata: { uid: "121" } };
@@ -98,7 +97,7 @@ export default function productDetailPage(props) {
       ? (
         <Layout footer={getFooter} page={result}>
           <div className="pdpheader">
-          <h1>Personify XP Demo</h1>
+            <h1>Personify XP Demo</h1>
           </div>
           <div className="pdpCategoriesContainer">
             <Link href="/demo-page"><li className="categoryTitle">Home</li></Link>

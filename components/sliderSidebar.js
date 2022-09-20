@@ -348,6 +348,7 @@ function SliderSidebar({
         classes={{
           paper: classes.drawerPaper,
         }}
+        className="mySlider"
       >
         <img src="https://i.imgur.com/63vXA73.png" className="sidebar-logo" />
 
@@ -359,12 +360,12 @@ function SliderSidebar({
               <p className="sidebarCardInfoSubHeading">Targeting below 80% helps more your audience.</p>
             </div>
           </div>
-          <Box sx={{ width: '100%' }}>
+          {/* <Box sx={{ width: '100%' }}>
             <LinearProgress variant="determinate" value={bvsProgress} />
             <p className="bvsProgressValue">{bvsProgress}%</p>
-          </Box>
+          </Box> */}
           <div>
-            <p className="customTarget">Custom Targets</p>
+            <p className="customTarget">Custom Behaviours</p>
             <FormControl component="fieldset">
               <FormGroup aria-label="position" row className="checkboxContainer">
                 <div>
@@ -478,10 +479,10 @@ function SliderSidebar({
               <p className="sidebarCardInfoSubHeading">Targeting below 80% helps more your audience.</p>
             </div>
           </div>
-          <Box sx={{ width: '100%' }}>
+          {/* <Box sx={{ width: '100%' }}>
             <LinearProgress variant="determinate" value={tagsProgress} />
             <p className="tagsProgressValue">{tagsProgress}%</p>
-          </Box>
+          </Box> */}
           <div>
             <p className="customTarget">Custom Targets</p>
             <FormControl component="fieldset">

@@ -61,4 +61,18 @@
         height: 100%; 
         object-fit: contain;
     }
+    .sidebarIcon {
+        top: 60px;
+    }
+    .h1Home {
+        font-size: 28px;
+    }
+    .homeInfoContainer {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 25px;
+    }
+    .homeInfoContainer p {
+        width: 100%;
+    }
 }

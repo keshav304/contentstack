@@ -1,7 +1,8 @@
 const isBrowser = typeof window !== 'undefined';
 function getProductList() {
-  const pList = document.querySelector(".category-products").querySelectorAll(".productWidget");
+  const pList = document.querySelector(".category-products")?.querySelectorAll(".productWidget");
   const productList = [];
+  if (pList) {
   for (let i = 0; i < pList.length; i++) {
     const pContainer = pList[i];
     let fixed = false;
@@ -20,6 +21,7 @@ function getProductList() {
     };
     productList.push(product);
   }
+}
   return productList;
 }
 // function getHomePageBannerList() {

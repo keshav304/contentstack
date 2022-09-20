@@ -13,13 +13,15 @@ import "../styles/pdp.css";
 import "../styles/pdpcarousel.css";
 import "../styles/slider-sidebar.css";
 import '@contentstack/live-preview-utils/dist/main.css';
+import { MissionRecsProvider } from "../context/missionRecs";
+
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return <MissionRecsProvider><Component {...pageProps} /></MissionRecsProvider>;
 }
 
 export default MyApp;
