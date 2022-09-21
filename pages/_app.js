@@ -12,6 +12,7 @@ import "../styles/slider.css";
 import "../styles/pdp.css";
 import "../styles/pdpcarousel.css";
 import "../styles/slider-sidebar.css";
+import "../styles/mobile-sidebar.css";
 import '@contentstack/live-preview-utils/dist/main.css';
 import { MissionRecsProvider } from "../context/missionRecs";
 

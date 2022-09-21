@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import parse from "html-react-parser";
 import Tooltip from "./tool-tip";
+import MobileSidebar from "./mobileSidebar";
 
 export default function Header(props) {
   const { header } = props;
@@ -19,11 +20,12 @@ export default function Header(props) {
               </div>
             </div>
           ) : null} */}
-          <Link href="/demo-page"><h1>Personify XP Demo</h1></Link>
-{/* 
+      <Link href="/demo-page"><h1>Personify XP Demo</h1></Link>
+      <MobileSidebar />
+      {/*
       <div className="max-width header-div">
         <div className="wrapper-logo" > */}
-          {/* <Link className="logo-tag" title="Contentstack" href="/demo-page">
+      {/* <Link className="logo-tag" title="Contentstack" href="/demo-page">
             <img
               className="logo"
               src={header.logo.url}
@@ -31,8 +33,8 @@ export default function Header(props) {
               title={header.title}
             />
           </Link> */}
-          {/* <h1></h1? */}
-        {/* </div>
+      {/* <h1></h1? */}
+      {/* </div>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="navicon" />
@@ -57,7 +59,7 @@ export default function Header(props) {
           </ul>
         </nav> */}
 
-        {/* <div className="json-preview">
+      {/* <div className="json-preview">
           <Tooltip content="JSON Preview" direction="top">
             <span
               data-bs-toggle="modal"

@@ -119,7 +119,6 @@ export default function CategoryPage(props) {
     prods
       ? (
         <Layout header={getHeader} footer={getFooter} page={result}>
- 
           <CategorySection props={result.page_components[0].Sidebar} currentCategory={categoryId} />
           <div className="category-info">
             <h3 id={categoryId}>{categoryname.split("-").map((element) => element[0].toUpperCase() + element.slice(1, element.length)).join(" ")}</h3>

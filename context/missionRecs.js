@@ -1,5 +1,5 @@
 import {
-  createContext, useContext, useState, useMemo,
+  createContext, useContext, useState,
 } from "react";
 
 const Context = createContext();

@@ -957,13 +957,11 @@ class PersonifyXP {
     } else {
       // default is move elements
       for (let q = 0; q < rList.length; q++) {
-      console.log("rankingconfig",rankingConfig, rankingConfig.rankingContainer)
         let start = false;
         if (!start && rList[q] && !rList[q].fixed) {
           start = true;
         }
         if (rList[q] && start) {
-          console.log('rlist', rList[q],rList[q].element)
           rankingConfig.rankingContainer.appendChild(rList[q].element);
         }
       }

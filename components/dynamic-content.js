@@ -32,7 +32,6 @@ export default function DynamicContent({ props }) {
 
  return (
     <div>
-      hello world
     </div>
   );
 }

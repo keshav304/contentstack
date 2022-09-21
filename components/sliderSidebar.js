@@ -357,7 +357,7 @@ function SliderSidebar({
             <GpsFixedIcon className={classes.icon} />
             <div className="sidebarCardInfo">
               <p className="sidebarCardInfoHeading">Add Targeting Behaviours</p>
-              <p className="sidebarCardInfoSubHeading">Targeting below 80% helps more your audience.</p>
+              {/* <p className="sidebarCardInfoSubHeading">Targeting below 80% helps more your audience.</p> */}
             </div>
           </div>
           {/* <Box sx={{ width: '100%' }}>
@@ -476,7 +476,7 @@ function SliderSidebar({
             <GpsFixedIcon className={classes.icon} />
             <div className="sidebarCardInfo">
               <p className="sidebarCardInfoHeading">Add Targeting Tags</p>
-              <p className="sidebarCardInfoSubHeading">Targeting below 80% helps more your audience.</p>
+              {/* <p className="sidebarCardInfoSubHeading">Targeting below 80% helps more your audience.</p> */}
             </div>
           </div>
           {/* <Box sx={{ width: '100%' }}>

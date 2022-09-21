@@ -13,6 +13,8 @@
   "dependencies": {
     "@contentstack/live-preview-utils": "^1.0.1",
     "@contentstack/utils": "^1.1.1",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "contentstack": "^3.15.0",
     "html-react-parser": "^1.4.6",
     "jquery": "^3.6.0",
@@ -22,11 +24,10 @@
     "next-pwa": "^5.3.1",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
+    "react-burger-menu": "^3.0.8",
     "react-dom": "^17.0.2",
     "react-json-view": "^1.21.3",
-    "swiper": "^8.2.4",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2"
+    "swiper": "^8.2.4"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.6",

@@ -166,8 +166,8 @@ export default function Carousel(props) {
       <Swiper
         breakpoints={{
           320: {
-            slidesPerView: 1,
-            spaceBetween: 20,
+            slidesPerView: 1.2,
+            spaceBetween: 15,
           },
           480: {
             slidesPerView: 3,

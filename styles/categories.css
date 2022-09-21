@@ -116,6 +116,9 @@
     .leftCategorycontainer {
         display: none;
     }
+    .rightCategorycontainer {
+        display: none;
+    }
     .rightCategoryHeading {
         margin-left: 0px;
     }
@@ -135,5 +138,8 @@
     .category-products .productWidget {
         width: 90% !important;
         margin:auto !important;
+    }
+    .pdpCategoriesContainer .categoryTitle {
+        display: none;
     }
 }

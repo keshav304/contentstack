@@ -68,9 +68,7 @@
         font-size: 28px;
     }
     .homeInfoContainer {
-        width: 90%;
-        margin: auto;
-        margin-bottom: 25px;
+        display: none;
     }
     .homeInfoContainer p {
         width: 100%;

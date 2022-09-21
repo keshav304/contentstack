@@ -8,6 +8,7 @@ import Layout from '../../../components/layout';
 import RenderComponents from '../../../components/render-components';
 import { getHeaderRes, getFooterRes, getProdPageRes } from '../../../helper/index';
 import CategorySection from "../../../components/category-section";
+import MobileSidebar from './../../../components/mobileSidebar';
 
 const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
@@ -98,6 +99,7 @@ export default function productDetailPage(props) {
         <Layout footer={getFooter} page={result}>
           <div className="pdpheader">
             <h1>Personify XP Demo</h1>
+            <MobileSidebar/>
           </div>
           <div className="pdpCategoriesContainer">
             <Link href="/demo-page"><li className="categoryTitle">Home</li></Link>

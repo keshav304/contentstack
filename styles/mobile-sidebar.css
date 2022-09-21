@@ -1,0 +1,74 @@
+.bm-item {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    transition: color 0.2s;
+  }
+  
+  .bm-item:hover {
+    color: white;
+  }
+  
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 36px;
+    top: 36px;
+    display: none;
+  }
+  
+  .bm-burger-bars {
+    background: #373a47;
+  }
+
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  
+  .bm-cross {
+    background: #bdc3c7;
+  }
+  
+  .bm-menu {
+    background: #373a47;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+  
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+  
+  .bm-item-list {
+    color: #b8b7ad;
+  }
+  .bm-item-list li {
+    list-style: none;
+    margin-bottom: 14px;
+  }
+  
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  header nav {
+    flex: 1 1 100%;
+    text-align: center;
+}
+.mbcurrentCategoryTitle {
+    color: #fff;
+}
+@media only screen and (max-width: 600px) {
+    .bm-burger-button {
+        width: 36px;
+        height: 30px;
+        right: 14px;
+        top: 72px;
+        display: block;
+    }
+    header h1 {
+        margin-right: 24px;
+    }
+}
