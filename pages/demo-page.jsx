@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import getConfig from 'next/config';
+import Link from "next/link";
 import { onEntryChange } from '../sdk-plugin/index';
 import Layout from '../components/layout';
 import RenderComponents from '../components/render-components';
@@ -7,11 +8,13 @@ import { getHeaderRes, getFooterRes, getDemoRes } from '../helper/index';
 import Slider from "../components/slider";
 import SliderSidebar from "../components/sliderSidebar";
 import SidebarOpenBtn from "../components/assets/sidebar-btn.png";
+import MobileSidebar from './../components/mobileSidebar';
 
 export default function Demo(props) {
   const {
     header, footer, result, entryUrl,
   } = props;
+  console.log(props, 'props');
   const { CONTENTSTACK_LIVE_PREVIEW } = getConfig().publicRuntimeConfig;
   const [getHeader, setHeader] = useState(header);
   const [getFooter, setFooter] = useState(footer);
@@ -152,12 +155,14 @@ export default function Demo(props) {
       </div>
       <div className="homeInfoContainer">
         <h2 className="h1Home">Home</h2>
+        <h1 className="h1Heading">Personify XP Demo</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Pellentesque in feugiat nulla. Integer a augue ut leo cursus convallis.
-
         </p>
       </div>
+      {/* <Link href="/demo-page"><h1>Personify XP Demo</h1></Link>
+      <MobileSidebar /> */}
       <SliderSidebar
         isSidebarOpen={isOpen}
         setIsSidebarOpen={setIsOpen}
@@ -181,7 +186,6 @@ export default function Demo(props) {
 
 export async function getServerSideProps(context) {
   try {
-  console.log("demo",context.req.headers.referer)
     const entryRes = await getDemoRes(context.resolvedUrl);
     const headerRes = await getHeaderRes();
     const footerRes = await getFooterRes();

@@ -109,8 +109,8 @@ export default function PdpCarousel({ props }) {
           breakpoints={{
             // when window width is >= 320px
             320: {
-              slidesPerView: 1,
-              spaceBetween: 10,
+              slidesPerView: 1.2,
+              spaceBetween: 15,
             },
             // when window width is >= 480px
             480: {

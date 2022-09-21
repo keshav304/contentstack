@@ -142,4 +142,8 @@
     .pdpCategoriesContainer .categoryTitle {
         display: none;
     }
+    .categoryTitle {
+        font-size: 20px;
+        line-height: 2.2rem;
+    }
 }

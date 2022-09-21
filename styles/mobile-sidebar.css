@@ -44,6 +44,7 @@
   
   .bm-item-list {
     color: #b8b7ad;
+    text-align: center;
   }
   .bm-item-list li {
     list-style: none;
@@ -53,10 +54,6 @@
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
-  header nav {
-    flex: 1 1 100%;
-    text-align: center;
-}
 .mbcurrentCategoryTitle {
     color: #fff;
 }
@@ -69,6 +66,6 @@
         display: block;
     }
     header h1 {
-        margin-right: 24px;
+      display: none;
     }
 }

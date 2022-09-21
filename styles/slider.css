@@ -49,6 +49,9 @@
     color: #000;
     margin-bottom:0px
 }
+.h1Heading {
+    display: none;
+}
 @media only screen and (max-width: 600px) {
     .pcHomeSliderContainer {
         display:none
@@ -65,12 +68,18 @@
         top: 60px;
     }
     .h1Home {
-        font-size: 28px;
+        display:none
     }
-    .homeInfoContainer {
-        display: none;
+    .h1Heading {
+        display:block;
+        text-align: center;
+        margin-bottom: 0px;
+        font-size: 28px;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
     }
     .homeInfoContainer p {
-        width: 100%;
+        display: none;
     }
 }
