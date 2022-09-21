@@ -34,6 +34,18 @@
         width: 93%;
         margin:auto
     }
+    .pdpcarouselHeading {
+        font-weight: 400;
+        text-align: left;
+        margin-left: 15px;
+        margin-top: 48px;
+    }
+    .productNameAndPriceContainer p {
+        margin-top: 19px;
+        padding-right: 10px;
+        margin-bottom: 8px;
+        font-weight: 400;
+    }
     .pdpCarouselContainer .productWidget {
         width: 100%;
     }
