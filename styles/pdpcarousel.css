@@ -16,7 +16,7 @@
     margin:auto
 }
 .pdpCarouselContainer .productWidget {
-    width: 75%;
+    width: 86%;
     height: auto;
     display: inline-block;
     padding-top: 20px;
@@ -26,8 +26,8 @@
     margin-left: 37px;
 }
 .pdpCarouselContainer .swiper-slide {
-    width: 24% !important;
-    margin-right: 15px;
+    width: 24%!important;
+    margin-right: 3px !important;
 }
 
 @media only screen and (max-width: 600px) {
