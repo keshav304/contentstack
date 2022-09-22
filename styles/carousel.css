@@ -18,6 +18,13 @@
     overflow: hidden;
     margin: 0 5%;
 }
+.carousel .swiper-slide {
+    width: 25.2% !important;
+    margin-right: 0px !important;
+}
+.carousel .productWidget {
+    width: 90%;
+}
 .swiper-pagination {
     display: none;
 }
