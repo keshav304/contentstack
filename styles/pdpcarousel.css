@@ -15,13 +15,13 @@
     width: 98%;
     margin:auto
 }
-/* .pdpCarouselContainer .productWidget {
-    width: 327px;
+.pdpCarouselContainer .productWidget {
+    width: 75%;
     height: auto;
     display: inline-block;
     padding-top: 20px;
     cursor: pointer;
-} */
+}
 .pdpCarouselContainer .swiper-slide:first-of-type {
     margin-left: 37px;
 }
