@@ -15,18 +15,19 @@
     width: 98%;
     margin:auto
 }
-.pdpCarouselContainer .productWidget {
-    width: 270px;
+/* .pdpCarouselContainer .productWidget {
+    width: 327px;
     height: auto;
     display: inline-block;
-    margin: 0px -1px;
     padding-top: 20px;
     cursor: pointer;
-    
+} */
+.pdpCarouselContainer .swiper-slide:first-of-type {
+    margin-left: 37px;
 }
 .pdpCarouselContainer .swiper-slide {
-    padding-left: 55px;
-    width: 275.75px !important;
+    width: 314px !important;
+    margin-right: 15px;
 }
 
 @media only screen and (max-width: 600px) {

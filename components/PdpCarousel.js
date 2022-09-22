@@ -120,7 +120,6 @@ export default function PdpCarousel({ props }) {
             // when window width is >= 640px
             640: {
               slidesPerView: 4,
-              spaceBetween: 1,
             },
           }}
           pagination={{
@@ -130,6 +129,7 @@ export default function PdpCarousel({ props }) {
           speed={500}
           modules={[Pagination, Navigation]}
           className="mySwiper"
+          spaceBetween={15}
         >
           <div className="productContainer">
             <div className="products" style={{ transform: "translateX(0)" }}>
