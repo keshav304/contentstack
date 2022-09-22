@@ -23,7 +23,7 @@
     cursor: pointer;
 }
 .pdpCarouselContainer .swiper-slide:first-of-type {
-    margin-left: 37px;
+    margin-left: 3%;
 }
 .pdpCarouselContainer .swiper-slide {
     width: 24%!important;
