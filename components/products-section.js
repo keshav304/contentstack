@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import getConfig from 'next/config';
 import ProductSectionWidget from "./product-section-widget";
 import { makeDecision } from "../helper/choice.js";
+import { useMissionRecsContext } from "../context/missionRecs";
 
 const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
@@ -18,13 +19,46 @@ const categoryBehaviours = {
   bltd5b1b9bfd6440b50: ['Kitchen', 'Dining'],
   bltbbe5086bbf5a7d2f: ['Kitchen', 'Dining'],
 };
+const personifyCategoryBehaviours = {
+  bltc91ab475eaafa987: [],
+  blt20c1aa118802242b: ['Furniture', 'Livingroom'],
+  blt8143307172f69ca6: ['Furniture'],
+  bltf8267fd9073b00ed: [],
+  bltc82faddc7abebcf9: ['Bedroom', 'Furniture'],
+  blt6ebfb491cf8a5002: [],
+  bltd5b1b9bfd6440b50: ['Kitchen'],
+  bltbbe5086bbf5a7d2f: ['Kitchen'],
+};
 function ProductsSection({ props, personalizationBehaviours, personalizationTags }) {
   const [prods, setProducts] = React.useState([]);
   const [behaviour, setBehaviour] = React.useState(null);
   const [behavioursList, setBehaviours] = React.useState(null);
   const [behaviouralProducts, setBeahviouralProducts] = React.useState([]);
-
+  const [missionRecs, setMissionRecs] = useMissionRecsContext();
+  const [mainMission, setMainMission] = React.useState('');
+  const [missionProducts, setMissionProducts] = React.useState([]);
+  React.useEffect(() => {
+    if (missionRecs.length > 0) {
+      const sortedmissions = missionRecs.sort(((a, b) => b.val - a.val));
+      const mainMsn = sortedmissions[0].name.split(' ')[0];
+      setMainMission(mainMsn);
+    }
+  }, []);
   const products = [];
+  React.useEffect(() => {
+    if (mainMission && !behavioursList && missionRecs.length > 0 && prods.length>0) {
+      const filteredProds = prods.filter((prod) => {
+        for (const mission of missionRecs) {
+          if (personifyCategoryBehaviours[prod.entry.category[0].uid].indexOf(mission.name.split(' ')[0]) !== -1) {
+            return prod;
+          }
+        }
+      });
+      if (filteredProds.length > 0) {
+        setMissionProducts(filteredProds);
+      }
+    }
+  }, [mainMission, behavioursList,prods.length]);
   React.useEffect(() => {
     if (behavioursList) {
       const filteredProds = prods.filter((prod) => {
@@ -81,7 +115,7 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
   }, []);
   return (
     <div className="productsSectionContainer">
-      {!behaviour && prods.map((prod, key) => (
+      {!behaviour && !mainMission && prods.map((prod, key) => (
         <ProductSectionWidget
           product={prod.entry}
           key={key}
@@ -93,6 +127,18 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
           key={key}
         />
       ))}
+      {(!behaviour && mainMission && missionProducts.length) ? missionProducts.map((prod, key) => (
+        <ProductSectionWidget
+          product={prod.entry}
+          key={key}
+        />
+      ))
+        : prods.map((prod, key) => (
+          <ProductSectionWidget
+            product={prod.entry}
+            key={key}
+          />
+        ))}
     </div>
   );
 }

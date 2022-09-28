@@ -14,7 +14,6 @@ export default function Demo(props) {
   const {
     header, footer, result, entryUrl,
   } = props;
-  console.log(props, 'props');
   const { CONTENTSTACK_LIVE_PREVIEW } = getConfig().publicRuntimeConfig;
   const [getHeader, setHeader] = useState(header);
   const [getFooter, setFooter] = useState(footer);
