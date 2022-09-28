@@ -95,7 +95,7 @@ export default function PdpCarousel({ props }) {
           }));
           const { missions } = response;
           setProducts(arr);
-          setMissionRecs(missions);
+          setMissionRecs(missions.sort(((a, b) => b.val - a.val)));
         });
       }
     }, 3000);

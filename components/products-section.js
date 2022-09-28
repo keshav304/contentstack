@@ -46,19 +46,20 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
   }, []);
   const products = [];
   React.useEffect(() => {
-    if (mainMission && !behavioursList && missionRecs.length > 0 && prods.length>0) {
-      const filteredProds = prods.filter((prod) => {
-        for (const mission of missionRecs) {
+    if (mainMission && !behavioursList && missionRecs.length > 0 && prods.length > 40) {
+      let filteredProds = [];
+      for (const mission of missionRecs) {
+        filteredProds = prods.filter((prod) => {
           if (personifyCategoryBehaviours[prod.entry.category[0].uid].indexOf(mission.name.split(' ')[0]) !== -1) {
             return prod;
           }
-        }
-      });
+        });
+      }
       if (filteredProds.length > 0) {
         setMissionProducts(filteredProds);
       }
     }
-  }, [mainMission, behavioursList,prods.length]);
+  }, [mainMission, behavioursList, prods.length]);
   React.useEffect(() => {
     if (behavioursList) {
       const filteredProds = prods.filter((prod) => {
@@ -121,13 +122,13 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
           key={key}
         />
       ))}
-      {behaviour && behaviouralProducts.length && behaviouralProducts.map((prod, key) => (
+      {behaviour && behaviouralProducts.length > 0 && behaviouralProducts.map((prod, key) => (
         <ProductSectionWidget
           product={prod.entry}
           key={key}
         />
       ))}
-      {(!behaviour && mainMission && missionProducts.length) ? missionProducts.map((prod, key) => (
+      {(!behaviour && mainMission && missionProducts.length > 0) ? missionProducts.map((prod, key) => (
         <ProductSectionWidget
           product={prod.entry}
           key={key}
