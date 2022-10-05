@@ -6,8 +6,12 @@
     justify-content: space-between;
     margin-top: 60px;
 }
-.productSectionWidget {
+.productsectionanimateddiv {
     width: 46%;
+    height: auto;
+}
+.productSectionWidget {
+    width: 100%;
     height: auto;
     display: inline-block;
     margin: 5px 10px;
@@ -45,9 +49,9 @@
     .productsSectionHeading{
         margin-left: 0px;
     }
-    .productSectionWidget{
+    .productsectionanimateddiv {
         width: 90%;
-        margin: auto;
+        height: auto;
         margin-bottom: 25px;
     }
 }

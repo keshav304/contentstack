@@ -1,6 +1,9 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import getConfig from 'next/config';
+import {
+  useTransition, animated,
+} from 'react-spring';
 import ProductSectionWidget from "./product-section-widget";
 import { makeDecision } from "../helper/choice.js";
 import { useMissionRecsContext } from "../context/missionRecs";
@@ -29,6 +32,7 @@ const personifyCategoryBehaviours = {
   bltd5b1b9bfd6440b50: ['Kitchen'],
   bltbbe5086bbf5a7d2f: ['Kitchen'],
 };
+
 function ProductsSection({ props, personalizationBehaviours, personalizationTags }) {
   const [prods, setProducts] = React.useState([]);
   const [behaviour, setBehaviour] = React.useState(null);
@@ -114,32 +118,83 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
   useEffect(() => {
     getProducts();
   }, []);
+  const transition1 = useTransition(prods, {
+    from: { x: -10, opacity: 0 },
+    enter: { x: 0, opacity: 1 },
+    leave: { x: -10, opacity: 0 },
+  });
+  const transition2 = useTransition(behaviouralProducts, {
+    from: { x: -10, opacity: 0 },
+    enter: { x: 0, opacity: 1 },
+    leave: { x: -100, opacity: 0 },
+  });
+  const transition3 = useTransition(missionProducts, {
+    from: { x: -100, opacity: 0},
+    enter: { x: 0, opacity: 1},
+    leave: { x: -100, opacity: 0 },
+  });
   return (
     <div className="productsSectionContainer">
-      {!behaviour && !mainMission && prods.map((prod, key) => (
-        <ProductSectionWidget
-          product={prod.entry}
-          key={key}
-        />
-      ))}
-      {behaviour && behaviouralProducts.length > 0 && behaviouralProducts.map((prod, key) => (
-        <ProductSectionWidget
-          product={prod.entry}
-          key={key}
-        />
-      ))}
-      {(!behaviour && mainMission && missionProducts.length > 0) ? missionProducts.map((prod, key) => (
-        <ProductSectionWidget
-          product={prod.entry}
-          key={key}
-        />
-      ))
-        : prods.map((prod, key) => (
-          <ProductSectionWidget
-            product={prod.entry}
-            key={key}
-          />
+      {!behaviour && !mainMission
+        ? transition1((style, item) => (
+          <animated.div style={style} className="productsectionanimateddiv">
+            <ProductSectionWidget
+              product={item.entry}
+              key={Math.floor((Math.random() * 100) + 1)}
+            />
+          </animated.div>
+        )) : null}
+      {behaviour && behaviouralProducts.length > 0
+        ? transition2((style, item) => (
+          <animated.div style={style} className="productsectionanimateddiv">
+            <ProductSectionWidget
+              product={item.entry}
+              key={Math.floor((Math.random() * 100) + 1)}
+            />
+          </animated.div>
+        )) : null}
+
+      {(!behaviour && mainMission && missionProducts.length > 0)
+        ? transition3((style, item) => (
+          <animated.div style={style} className="productsectionanimateddiv">
+            <ProductSectionWidget
+              product={item.entry}
+              key={Math.floor((Math.random() * 100) + 1)}
+            />
+          </animated.div>
+        ))
+        : transition1((style, item) => (
+          <animated.div style={style}>
+            <ProductSectionWidget
+              product={item.entry}
+              key={Math.floor((Math.random() * 100) + 1)}
+            />
+          </animated.div>
         ))}
+      {/* {transition1((style, item) => (
+        <animated.div style={style}>
+          <ProductSectionWidget
+            product={item.entry}
+            key={Math.floor((Math.random() * 100) + 1)}
+          />
+        </animated.div>
+      ))}
+      {transition2((style, item) => (
+        <animated.div style={style}>
+          <ProductSectionWidget
+            product={item.entry}
+            key={Math.floor((Math.random() * 100) + 1)}
+          />
+        </animated.div>
+      ))}
+      {transition3((style, item) => (
+        <animated.div style={style}>
+          <ProductSectionWidget
+            product={item.entry}
+            key={Math.floor((Math.random() * 100) + 1)}
+          />
+        </animated.div>
+      ))} */}
     </div>
   );
 }
