@@ -116,12 +116,12 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
   }, []);
   return (
     <div className="productsSectionContainer">
-      {!behaviour && !mainMission && prods.map((prod, key) => (
+      {/* {!behaviour && !mainMission && prods.slice(0,30).map((prod, key) => (
         <ProductSectionWidget
           product={prod.entry}
           key={key}
         />
-      ))}
+      ))} */}
       {behaviour && behaviouralProducts.length > 0 && behaviouralProducts.map((prod, key) => (
         <ProductSectionWidget
           product={prod.entry}
@@ -134,7 +134,7 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
           key={key}
         />
       ))
-        : prods.map((prod, key) => (
+        : prods.slice(0,30).map((prod, key) => (
           <ProductSectionWidget
             product={prod.entry}
             key={key}
