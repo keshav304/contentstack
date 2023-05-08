@@ -65,6 +65,7 @@ function Slider({ props, personalizationBehaviours, personalizationTags }) {
                   className="sliderImg"
                   alt={banner.image.filename}
                   src={banner.image.url}
+                  key={banner.link}
                 />
               </Link>
             </SwiperSlide>

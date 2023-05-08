@@ -271,6 +271,7 @@ export default function MobileSidebar() {
                     onClick={() => setMenuOpen(false)}
                     className="menu-item"
                     href="/demo-page"
+                    key={id}
                   >
                     <li className={router.pathname === '/demo-page' ? "mbcurrentCategoryTitle" : "categoryTitle"} key="homeid" categorycode="home">Home</li>
 
@@ -282,6 +283,7 @@ export default function MobileSidebar() {
                   onClick={() => setMenuOpen(false)}
                   className="menu-item"
                   href={`${href}/${id}`}
+                  key={id}
                 >
                   <li className={currentCategory === id ? "mbcurrentCategoryTitle" : "categoryTitle"} key={id} categorycode={id}>{title}</li>
 

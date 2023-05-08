@@ -1,27 +1,28 @@
+/* eslint-disable no-plusplus */
 const isBrowser = typeof window !== 'undefined';
 function getProductList() {
   const pList = document.querySelector(".category-products")?.querySelectorAll(".productWidget");
   const productList = [];
   if (pList) {
-  for (let i = 0; i < pList.length; i++) {
-    const pContainer = pList[i];
-    let fixed = false;
-    const sId = `sid${i}`;
-    const pCode = pContainer.getAttribute("productCode");
-    if (pContainer.className?.includes("tag-promoted") || i < 3) {
-      fixed = false;
+    for (let i = 0; i < pList.length; i++) {
+      const pContainer = pList[i];
+      let fixed = false;
+      const sId = `sid${i}`;
+      const pCode = pContainer.getAttribute("productCode");
+      if (pContainer.className?.includes("tag-promoted") || i < 3) {
+        fixed = false;
+      }
+      pContainer.classList.add(sId);
+      const product = {
+        sid: sId,
+        id: pCode,
+        fixed,
+        type: "PRODUCT",
+        element: pContainer,
+      };
+      productList.push(product);
     }
-    pContainer.classList.add(sId);
-    const product = {
-      sid: sId,
-      id: pCode,
-      fixed,
-      type: "PRODUCT",
-      element: pContainer,
-    };
-    productList.push(product);
   }
-}
   return productList;
 }
 // function getHomePageBannerList() {

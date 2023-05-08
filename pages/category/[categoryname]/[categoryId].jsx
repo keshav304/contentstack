@@ -12,7 +12,12 @@ import CategorySection from "../../../components/category-section";
 import { PersonifyXP } from '../../../personify/sdk';
 import { personifyConfig } from '../../../personify/config';
 import RecommendedCategories from '../../../components/recommended-categories';
-
+import * as Contentstack from 'contentstack';
+const stack = Contentstack.Stack({
+  api_key: 'blt6b5ca2b750b9ab61',
+  delivery_token: 'csa68a492305c55dd407d10a44',
+  environment: 'development',
+});
 const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
   ? process.env
@@ -20,7 +25,7 @@ const envConfig = process.env.CONTENTSTACK_API_KEY
 
 export default function CategoryPage(props) {
   const {
-    header, footer, result, entryUrl,
+    header, footer, result, entryUrl, personifyScript,
   } = props;
   const { CONTENTSTACK_LIVE_PREVIEW } = getConfig().publicRuntimeConfig;
   const [getHeader, setHeader] = useState(header);
@@ -61,10 +66,28 @@ export default function CategoryPage(props) {
     return json;
   }
   useEffect(() => {
+    console.log("personifyScript", personifyScript);
+    // personifyScript.forEach(entry => {
+    //   if (entry.page === 'homepage') {
+    //     const script = document.createElement('script');
+    //     script.type = 'text/javascript';
+    //     script.innerHTML = entry.scriptContent;
+    //     document.head.appendChild(script);
+    //   } else if (entry.page === 'blog') {
+    //     const script = document.createElement('script');
+    //     script.type = 'text/javascript';
+    //     script.innerHTML = entry.scriptContent;
+    //     document.getElementById('blog-container').appendChild(script);
+    //   }
+    //   // Add more conditions for other pages as needed
+    // });
+  }, []);
+  useEffect(() => {
     onEntryChange(() => {
       if (CONTENTSTACK_LIVE_PREVIEW === 'true') fetchData();
     });
   }, []);
+
   useEffect(() => {
     setRecommendedCategories([]);
     setTimeout(() => {
@@ -72,7 +95,7 @@ export default function CategoryPage(props) {
       if (p) {
         const config = _.cloneDeep(personifyConfig);
         config.pages.plp.isPage = true;
-        config.pages.plp.rankingContainer=document.querySelector(".category-products");
+        config.pages.plp.rankingContainer = document.querySelector(".category-products");
         const personify = new PersonifyXP(config);
         personify.init();
         const apiArr = {
@@ -147,6 +170,7 @@ export async function getServerSideProps(context) {
     const entryRes = await getCategoryPageRes("/category/[categoryname]/[categoryId]");
     const headerRes = await getHeaderRes();
     const footerRes = await getFooterRes();
+
     return {
       props: {
         entryUrl: context.resolvedUrl,

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import getConfig from 'next/config';

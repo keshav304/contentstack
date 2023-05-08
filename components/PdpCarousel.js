@@ -24,7 +24,7 @@ const envConfig = process.env.CONTENTSTACK_API_KEY
   ? process.env
   : publicRuntimeConfig;
 
-export default function PdpCarousel({ props }) {
+export default function PdpCarousel({ props, personifyScript }) {
   const [prods, setProducts] = React.useState([]);
   const [missionRecs, setMissionRecs] = useMissionRecsContext();
   const products = [];
@@ -62,44 +62,59 @@ export default function PdpCarousel({ props }) {
 
   useEffect(() => {
     getProducts();
+  }, []);
+  const getPersonifyRecs = async () => {
+    if (personifyScript) {
+      const script = `${personifyScript[0].scriptContentText}`;
+      if (script) {
+        const config = _.cloneDeep(personifyConfig);
+
+        if (config) {
+          config.pages.pdp.isPage = true;
+          const personify = new PersonifyXP(config);
+          personify.init();
+          const apiArr = {
+            sessionid: personify.getPersonifySessionId(),
+            shopperid: personify.getPersonifyShopperId(),
+            referrer: personify.getReferrer(),
+            pagesize: 5,
+            algorithm: "freeform",
+            overrides: [],
+            slot: "default",
+            rectype: 0,
+          };
+          const apiJSON = JSON.stringify(apiArr);
+          personify.callAPI(apiJSON, "getrecs", (err, response) => {
+            const arr = response.recommendations.map((prod) => ({
+              entry: {
+                uid: prod.productcode,
+                url: `/product/${prod.name.split(' ').join('-')}`,
+                product_name: prod.name,
+                price: prod.price,
+                product_image: {
+                  url: prod.image,
+                },
+                fromPersonify: true,
+              },
+            }));
+            return response;
+            // const { missions } = response;
+            // setProducts(arr);
+            // setMissionRecs(missions.sort(((a, b) => b.val - a.val)));
+          });
+        }
+      }
+    }
+  };
+  useEffect(() => {
+    console.log({ personifyScript });
     setTimeout(() => {
       const p = true;
       if (p) {
-        const config = _.cloneDeep(personifyConfig);
-        config.pages.pdp.isPage = true;
-        const personify = new PersonifyXP(config);
-        personify.init();
-        const apiArr = {
-          sessionid: personify.getPersonifySessionId(),
-          shopperid: personify.getPersonifyShopperId(),
-          referrer: personify.getReferrer(),
-          pagesize: 5,
-          algorithm: "freeform",
-          overrides: [],
-          slot: "default",
-          rectype: 0,
-        };
-        const apiJSON = JSON.stringify(apiArr);
-        personify.callAPI(apiJSON, "getrecs", (err, response) => {
-          const arr = response.recommendations.map((prod) => ({
-            entry: {
-              uid: prod.productcode,
-              url: `/product/${prod.name.split(' ').join('-')}`,
-              product_name: prod.name,
-              price: prod.price,
-              product_image: {
-                url: prod.image,
-              },
-              fromPersonify: true,
-            },
-          }));
-          const { missions } = response;
-          setProducts(arr);
-          setMissionRecs(missions.sort(((a, b) => b.val - a.val)));
-        });
+        getPersonifyRecs();
       }
     }, 3000);
-  }, []);
+  }, [personifyScript]);
   const { _metadata: { uid } } = props;
   return (
     <>

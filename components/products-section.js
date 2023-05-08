@@ -1,8 +1,9 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import getConfig from 'next/config';
 import ProductSectionWidget from "./product-section-widget";
-import { makeDecision } from "../helper/choice.js";
+import { makeDecision } from "../helper/choice";
 import { useMissionRecsContext } from "../context/missionRecs";
 
 const { publicRuntimeConfig } = getConfig();
@@ -116,12 +117,6 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
   }, []);
   return (
     <div className="productsSectionContainer">
-      {/* {!behaviour && !mainMission && prods.slice(0,30).map((prod, key) => (
-        <ProductSectionWidget
-          product={prod.entry}
-          key={key}
-        />
-      ))} */}
       {behaviour && behaviouralProducts.length > 0 && behaviouralProducts.map((prod, key) => (
         <ProductSectionWidget
           product={prod.entry}
@@ -134,7 +129,7 @@ function ProductsSection({ props, personalizationBehaviours, personalizationTags
           key={key}
         />
       ))
-        : prods.slice(0,30).map((prod, key) => (
+        : prods.slice(0, 30).map((prod, key) => (
           <ProductSectionWidget
             product={prod.entry}
             key={key}

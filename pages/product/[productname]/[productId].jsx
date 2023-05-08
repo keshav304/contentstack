@@ -9,7 +9,12 @@ import RenderComponents from '../../../components/render-components';
 import { getHeaderRes, getFooterRes, getProdPageRes } from '../../../helper/index';
 import CategorySection from "../../../components/category-section";
 import MobileSidebar from './../../../components/mobileSidebar';
-
+import * as Contentstack from 'contentstack';
+const stack = Contentstack.Stack({
+  api_key: 'blt6b5ca2b750b9ab61',
+  delivery_token: 'csa68a492305c55dd407d10a44',
+  environment: 'development',
+});
 const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
   ? process.env
@@ -25,6 +30,7 @@ export default function productDetailPage(props) {
   const [getEntry, setEntry] = useState(result);
   const [pdpProduct, setPdpProduct] = useState();
   const [productCategory, setProductCategory] = useState('');
+  const [personifyScript, setPersonifyScript] = useState()
   const router = useRouter();
   const { productId } = router.query;
   async function fetchData() {
@@ -92,6 +98,31 @@ export default function productDetailPage(props) {
       fetchCategory(uid, _content_type_uid);
     }
   }, [pdpProduct]);
+
+  async function fetchScripts() {
+    console.log('fetch scripts')
+    const Query = stack.ContentType('scripts').Query();
+    const response = await Query.where('active', true).find();
+    const scriptContent = response[0].map((entry) => {
+      const personifyscript = JSON.parse(JSON.stringify(entry));
+      return {
+        page: personifyscript.page,
+        scriptContent: personifyscript.script_content,
+        scriptContentText: personifyscript.script_content_text,
+        file: personifyscript.file,
+        rich_text_editor: personifyscript.rich_text_editor,
+      };
+    });
+    setPersonifyScript(scriptContent);
+  }
+
+  useEffect(() => {
+    fetchScripts()
+  }, []);
+  useEffect(() => {
+    console.log("personifyScript",personifyScript);
+  }, [personifyScript]);
+  
   const pscprops = { _metadata: { uid: "121" } };
   return (
     pdpProduct
@@ -99,7 +130,7 @@ export default function productDetailPage(props) {
         <Layout footer={getFooter} page={result}>
           <div className="pdpheader">
             <h1>Personify XP Demo</h1>
-            <MobileSidebar/>
+            <MobileSidebar />
           </div>
           <div className="pdpCategoriesContainer">
             <Link href="/demo-page"><li className="categoryTitle">Home</li></Link>
@@ -162,7 +193,7 @@ export default function productDetailPage(props) {
           <div className="pdpDescriptionImageContainer">
             <img className="pdpDescriptionImage" src={pdpProduct.productimages.productimage[1].url} alt="ProductImage" />
           </div>
-          <PdpCarousel props={pscprops} />
+          <PdpCarousel props={pscprops} personifyScript={personifyScript}/>
         </Layout>
       )
       : (
